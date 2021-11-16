@@ -1,0 +1,18 @@
+[Unit]
+Description=GxG Data Server
+After=network.target
+
+[Service]
+Type=simple
+
+User=root
+
+WorkingDirectory=/srv/gxg-server
+
+ExecStart=/srv/gxg-server/daemon start
+ExecStop=/srv/gxg-server/daemon stop
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

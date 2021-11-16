@@ -1,0 +1,7439 @@
+{
+  "formats": {
+    "b702f8d9-c3e0-431e-9308-6b815e29030d": {
+      "uuid": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "type": "structure",
+      "ufs": "org.gxg.exchange.currency",
+      "title": "Currency",
+      "version": 0.0001,
+      "mime_types": "",
+      "content": {
+        "type": "Hash",
+        "content": {
+          "political": {
+            "type": "String",
+            "content": "true"
+          },
+          "iso": {
+            "type": "String",
+            "content": ""
+          },
+          "iso_number": {
+            "type": "String",
+            "content": ""
+          },
+          "symbol": {
+            "type": "String",
+            "content": ""
+          },
+          "name": {
+            "type": "String",
+            "content": ""
+          },
+          "unit_multiplier": {
+            "type": "Integer",
+            "content": 1
+          },
+          "expression_format": {
+            "type": "String",
+            "content": ""
+          }
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "type": "element_hash",
+      "uuid": "80148889-e8e8-43d2-905a-4e8d9a05783d",
+      "title": "Pound Sterling",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GBP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "826"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "£"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Pound Sterling"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "a5872799-8779-48a4-99e3-0cb70e462630",
+      "title": "US Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "USD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "840"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "US Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "9725c43e-2a2e-47a2-bff7-5dac28b2624b",
+      "title": "US Dollar (Same day)",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "USD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "998"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "US Dollar (Same day)"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "9ec219eb-0844-4f03-afac-d7196e674d83",
+      "title": "US Dollar (Next day)",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "USD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "997"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "US Dollar (Next day)"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "7667bb96-4d9c-475d-b690-5f546ac8dc85",
+      "title": "Afghani",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "AFN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "971"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "؋"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Afghani"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "856c9958-d161-473c-8c04-c30e5d3e1d3d",
+      "title": "Euro",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "EUR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "978"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "€"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Euro"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "74a91bc5-15e3-479b-af93-afd09d6d4951",
+      "title": "Lek",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ALL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "008"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "L"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Lek"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "80a068d9-739a-4fad-b430-9cfdb26bd151",
+      "title": "Algerian Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "DZD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "012"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "د.ج"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Algerian Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "b0d68c74-55f7-4034-913e-8fc7ad9689c8",
+      "title": "Kwanza",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "AOA"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "973"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kz"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kwanza"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "a9a09f9e-7d54-4f23-8eb3-3d4b03c8763d",
+      "title": "East Caribbean Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "XCD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "951"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "East Caribbean Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "47f0dd31-3fa5-48c9-b2bf-f9d5f60c8f48",
+      "title": "Argentine Peso",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ARS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "032"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Argentine Peso"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "fb799493-7344-4d0c-bb07-850e2986b768",
+      "title": "Armenian Dram",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "AMD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "051"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "դր."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Armenian Dram"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "4ad97e86-00cc-42e4-9fa3-588c9737e436",
+      "title": "Aruban Guilder",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "AWG"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "533"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ƒ"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Aruban Guilder"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "57f611ff-bef5-42ea-ac40-0a0f4b9305e7",
+      "title": "Australian Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "AUD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "036"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Australian Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "5db51781-143d-4841-adf3-509a873b80f7",
+      "title": "Azerbaijanian Manat",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "AZN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "944"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Azerbaijanian Manat"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "5d39c45a-c026-4fc5-a1b2-4a8124f90f6d",
+      "title": "Bahamian Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BSD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "044"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Bahamian Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "2d5a95d0-5e50-48cf-a280-42696a70ea01",
+      "title": "Bahraini Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BHD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "048"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ب.د"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Bahraini Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "af9e2b5c-3064-4898-afb5-3f08d974cbeb",
+      "title": "Taka",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BDT"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "050"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "৳ "
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Taka"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "158504f4-3610-4739-8927-48f762dfe6cb",
+      "title": "Barbados Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BBD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "052"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Barbados Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "9b1c89a4-7c68-4bd5-a34d-ddaf5a1c2c46",
+      "title": "Belarussian Ruble",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BYR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "974"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Br"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Belarussian Ruble"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "0384313d-7c45-415d-90be-96860c44ef1d",
+      "title": "Belize Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BZD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "084"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Belize Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "28fa6594-fa9f-402d-a75b-447c1a8ee916",
+      "title": "CFA Franc BCEAO",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "XOF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "952"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CFA Franc BCEAO"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "e6261962-ef9b-4cda-97b6-0ce15a1533e1",
+      "title": "Bermudian Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BMD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "060"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Bermudian Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1137fb11-2797-4c77-869d-dbdbfca41a2d",
+      "title": "Indian Rupee",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "INR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "356"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rs"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Indian Rupee"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "9b5cf09c-37df-44ae-ba78-2d5d063b965f",
+      "title": "Ngultrum",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BTN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "064"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Ngultrum"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "57476cac-17de-4f09-a239-5b147f978949",
+      "title": "Boliviano",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BOB"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "068"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Bs."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Boliviano"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "94350a53-6fce-4eea-a260-ab3feb81b17f",
+      "title": "Mvdol",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BOV"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "984"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Mvdol"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "80da43ee-6050-4a68-9c92-6c6a5a94ba04",
+      "title": "Convertible Marks",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BAM"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "977"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KM"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Convertible Marks"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "c5ef9059-16f1-4537-ba37-295fab0334e9",
+      "title": "Pula",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BWP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "072"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "P"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Pula"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "de7982ac-1bef-4429-b9ee-acc77ff463b9",
+      "title": "Norwegian Krone",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "NOK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "578"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Norwegian Krone"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "888e4b23-d6db-4bae-94ba-2d393b7fcd79",
+      "title": "Brazilian Real",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BRL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "986"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "R$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Brazilian Real"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "9cb73559-a8dd-4372-b0fa-835b40663ca5",
+      "title": "Brunei Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BND"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "096"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Brunei Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "e57e17b3-5896-47ec-b490-9861953f243d",
+      "title": "Bulgarian Lev",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BGN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "975"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "лв"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Bulgarian Lev"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "a5895468-934c-4208-903e-3e990451a9f8",
+      "title": "Burundi Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "BIF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "108"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Burundi Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "24820a77-a631-4abe-b709-14c8c17bd1a6",
+      "title": "Riel",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KHR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "116"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "៛ "
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Riel"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "403a4a9b-a79b-48c1-9dc4-a3ce4f1c0068",
+      "title": "CFA Franc BEAC ‡",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "XAF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "950"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CFA Franc BEAC ‡"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "816d5bef-b08c-4b3b-8792-baf856708a8d",
+      "title": "Canadian Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CAD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "124"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Canadian Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "d5a8a92f-bb87-4c73-bc61-56c2ede8ab32",
+      "title": "Cape Verde Escudo",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CVE"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "132"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Cape Verde Escudo"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "5b7093a0-9569-4086-b6ef-b28eb14fe0f9",
+      "title": "Cayman Islands Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KYD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "136"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Cayman Islands Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "4caddc8a-86ca-4cea-9d59-4aa77fab0f6b",
+      "title": "Chilean Peso",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CLP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "152"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Chilean Peso"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "3635f8b2-5382-4589-9289-629ef1593c98",
+      "title": "Unidades de fomento",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CLF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "990"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Unidades de fomento"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "38a3c82d-4802-4818-8ed6-2c5aced12cdf",
+      "title": "Yuan Renminbi",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CNY"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "156"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "元 "
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Yuan Renminbi"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "5fbd76b0-abde-4413-b945-d73457be5c8e",
+      "title": "Colombian Peso",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "COP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "170"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Colombian Peso"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "545e9ea8-18af-4c38-8344-12f132e8bc83",
+      "title": "Unidad de Valor Real",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "COU"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "970"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Unidad de Valor Real"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "b51dab73-bd02-46a8-88c9-98bbaf0f0abb",
+      "title": "Comoro Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KMF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "174"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Comoro Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "c9a4f3d4-0cb1-4f37-a2e8-3a2ea55c93ce",
+      "title": "Congolese Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CDF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "976"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Congolese Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1c3ad354-b70e-4273-bdfe-7871f32938aa",
+      "title": "New Zealand Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "NZD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "554"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "New Zealand Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "c7148c1f-e5a8-470e-9541-b011c97c1496",
+      "title": "Costa Rican Colon",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CRC"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "188"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₡ "
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Costa Rican Colon"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "bccf4a84-762d-4ce9-86bf-2fec3dee334e",
+      "title": "Croatian Kuna",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "HRK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "191"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "kn"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Croatian Kuna"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "f259eeaa-9570-4b8f-a98e-597c54f8cdd9",
+      "title": "Cuban Peso",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CUP 192"
+        },
+        "iso_number": {
+          "type": "element_boolean",
+          "version": 0.0,
+          "content": null
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Cuban Peso"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "d4899722-cc6d-4ad6-989f-f6eecf709847",
+      "title": "Peso Convertible",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CUC"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "931"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Peso Convertible"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "a1529fb9-ea6a-4f27-9188-07568e763a55",
+      "title": "Czech Koruna",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CZK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "203"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kč"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Czech Koruna"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "af9de235-554b-4073-9751-347b12150afc",
+      "title": "Danish Krone",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "DKK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "208"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "kr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Danish Krone"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "b42beb08-3d13-4fd3-bb2b-a41bd6b78def",
+      "title": "Djibouti Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "DJF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "262"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Djibouti Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "c6a99699-152a-4bf7-b6c8-0897c58bebce",
+      "title": "Dominican Peso",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "DOP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "214"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Dominican Peso"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "8a8baf95-e561-4537-b961-334ba8a42551",
+      "title": "Egyptian Pound",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "EGP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "818"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ج.م"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Egyptian Pound"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ce69607a-54f2-4a0d-824d-9d2eebbe8261",
+      "title": "El Salvador Colon",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SVC"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "222"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₡ "
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "El Salvador Colon"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "dbc8556c-8648-4448-a797-df677339d902",
+      "title": "Nakfa",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ERN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "232"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Nfk"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Nakfa"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "bf0b114f-7e0b-403e-ae0c-468f1a60af9e",
+      "title": "Kroon",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "EEK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "233"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KR"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kroon"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ee5d599a-1be9-45e2-94c6-e08a3817c427",
+      "title": "Ethiopian Birr",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ETB"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "230"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Ethiopian Birr"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "d23b53d5-4305-46b5-8067-02f5ee5cfb34",
+      "title": "Falkland Islands Pound",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "FKP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "238"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "£"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Falkland Islands Pound"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "5685147e-b54b-41f7-9761-1d738a4b872c",
+      "title": "Fiji Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "FJD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "242"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fiji Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1867f467-dc6a-4e14-9008-cddc3d721523",
+      "title": "CFP Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "XPF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "953"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CFP Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "88cad164-e5e4-452e-98f7-24e90f957d01",
+      "title": "Dalasi",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GMD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "270"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "D"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Dalasi"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "7399793a-a016-4003-987d-032735e34de7",
+      "title": "Lari",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GEL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "981"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ლ"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Lari"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "6a17032c-1804-4355-a275-7d48272b7868",
+      "title": "Cedi",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GHS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "936"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₵"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Cedi"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "2d725a0e-ac16-4f0f-9424-43ba0bd717de",
+      "title": "Gibraltar Pound",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GIP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "292"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "£"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Gibraltar Pound"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "4fbf9b6b-d3fe-410b-9746-f126b0d5205f",
+      "title": "Quetzal",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GTQ"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "320"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Q"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Quetzal"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "09b5f2dd-b93f-4c29-9e03-745509dc8296",
+      "title": "Guinea Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GNF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "324"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Guinea Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "f6ff1c20-a35c-4937-b325-92d62715d278",
+      "title": "Guyana Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "GYD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "328"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Guyana Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "f158b724-c65b-46d1-adbd-b3606b5c8715",
+      "title": "Gourde",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "HTG"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "332"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "G"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Gourde"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "eb2504d2-109e-45b3-861b-2cad30e45bd6",
+      "title": "Lempira",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "HNL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "340"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "L"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Lempira"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "5cfa0230-0903-42c4-8aac-6763d1b143e3",
+      "title": "Hong Kong Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "HKD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "344"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Hong Kong Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "0deb50bd-2671-4284-bd8e-0f3f1b78dfb9",
+      "title": "Forint",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "HUF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "348"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Ft"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Forint"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "6910ee0f-6285-4007-b7f7-519eda9485d7",
+      "title": "Iceland Krona",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ISK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "352"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "kr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Iceland Krona"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "01ff6bce-7a71-4dff-9d46-586e605c6bc2",
+      "title": "Rupiah",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "IDR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "360"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rp"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rupiah"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "f764aea8-ce74-45d1-be45-71d4dd2d9456",
+      "title": "Iranian Rial",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "IRR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "364"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "﷼"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Iranian Rial"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "dd7914bc-3e6c-4e73-8150-6f2572e17a83",
+      "title": "Iraqi Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "IQD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "368"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ع.د"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Iraqi Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "27ea6ea0-0638-4351-808e-d84bb053821b",
+      "title": "New Israeli Sheqel",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ILS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "376"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₪"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "New Israeli Sheqel"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "30cd479d-5e81-4e0a-a322-dd266e05386e",
+      "title": "Jamaican Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "JMD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "388"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Jamaican Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "b6434943-a87f-4683-870d-01f2b47c997f",
+      "title": "Yen",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "JPY"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "392"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "¥"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Yen"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "a3755372-9da0-472b-a390-14315303292c",
+      "title": "Jordanian Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "JOD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "400"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "د.ا"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Jordanian Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "72ea67cb-23ee-405a-bd24-5bafbd1ab4b0",
+      "title": "Tenge",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KZT"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "398"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "〒"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Tenge"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "6a46a24a-98ee-4064-8a57-aae02349682c",
+      "title": "Kenyan Shilling",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KES"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "404"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Sh"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kenyan Shilling"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ceef2fb1-82d8-4630-9b7e-3c56e8f68d85",
+      "title": "North Korean Won",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KPW"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "408"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₩"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "North Korean Won"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "2feab8d7-a183-48c1-b330-f9ade059802d",
+      "title": "Won",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KRW"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "410"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₩"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Won"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "a4b7ed78-af6f-4bcb-8df7-96d929e8866c",
+      "title": "Kuwaiti Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KWD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "414"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "د.ك"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kuwaiti Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "adf53e62-bd22-4c37-be90-77244e53e361",
+      "title": "Som",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "KGS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "417"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Som"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "f31deb73-6ab7-42f1-92b2-7ea227e5d2b9",
+      "title": "Kip",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LAK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "418"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₭"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kip"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "d4a92b59-922d-4592-8ce1-0c00c1fcc143",
+      "title": "Latvian Lats",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LVL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "428"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Ls"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Latvian Lats"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "2ed05a10-b181-4c57-889b-4feeff10b13a",
+      "title": "Lebanese Pound",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LBP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "422"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ل.ل"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Lebanese Pound"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "6b30e5dd-5f88-4c46-abb4-1150435578d3",
+      "title": "Rand",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ZAR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "710"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "R"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rand"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "00f3d0f8-7892-4df1-8fea-37dc7f316e86",
+      "title": "Loti",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LSL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "426"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "L"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Loti"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "32525a81-f9d9-444c-9266-b42d1224bddc",
+      "title": "Liberian Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LRD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "430"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Liberian Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "dc53faaa-50d5-4e9a-93e3-626e8792b2b9",
+      "title": "Libyan Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LYD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "434"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ل.د"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Libyan Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "3c258a1d-c3a1-4423-8f60-f523309d43ee",
+      "title": "Swiss Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CHF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "756"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Swiss Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "7a8a460b-dd47-4306-b526-fcc36fd6d55e",
+      "title": "Lithuanian Litas",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LTL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "440"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Lt"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Lithuanian Litas"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "0ed3e5e3-8480-4438-91e4-627df38fcd5c",
+      "title": "Pataca",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MOP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "446"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "P"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Pataca"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "86d0ead0-5197-4f9d-85a5-3cc50c69e739",
+      "title": "Denar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MKD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "807"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Denar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1ae9bc02-ec22-4c35-8fcd-faa8b0fba32f",
+      "title": "Malagasy Ariary",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MGA"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "969"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Malagasy Ariary"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "27f9cdea-a201-43ad-9333-c572398016bd",
+      "title": "Kwacha",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MWK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "454"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MK"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kwacha"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "fa374867-ceed-427c-b29f-891a6d28460b",
+      "title": "Malaysian Ringgit",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MYR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "458"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "RM"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Malaysian Ringgit"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "60ab2092-7c2c-48ea-8563-11945e6cc365",
+      "title": "Rufiyaa",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MVR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "462"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ރ."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rufiyaa"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "d871cafc-30be-4fb6-a038-56ee84faf859",
+      "title": "Ouguiya",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MRO"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "478"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "UM"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Ouguiya"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "0d15e0a9-02d8-4adf-a52f-3287cbb7f8d9",
+      "title": "Mauritius Rupee",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MUR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "480"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rs"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Mauritius Rupee"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "45e05f6c-b33c-4e81-8f12-44e4796a1a20",
+      "title": "Mexican Peso",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MXN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "484"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Mexican Peso"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "febb5091-d61e-4918-aaf7-bc73143af65c",
+      "title": "Unidad de Inversion (UDI)",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MXV"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "979"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Unidad de Inversion (UDI)"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "053c9da6-66a7-41ba-b958-58971afb66c8",
+      "title": "Moldovan Leu",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MDL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "498"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "L"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Moldovan Leu"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ae0956ee-2b0f-443f-a353-e0332bfce115",
+      "title": "Tugrik",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MNT"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "496"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₮"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Tugrik"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "68a86da2-7510-4ea6-abf7-678b389a345a",
+      "title": "Moroccan Dirham",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MAD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "504"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "د.م."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Moroccan Dirham"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "2b3cd981-fc81-4480-a413-f3461a09efdf",
+      "title": "Metical",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MZN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "943"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MTn"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Metical"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "e48209f5-f608-4b22-8821-7958ca6d7e56",
+      "title": "Kyat",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "MMK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "104"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "K"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kyat"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "e1142a56-7913-425c-966b-7b180934d58a",
+      "title": "Nambia Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "NAD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "516"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Nambia Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "216ace5c-55ef-4b9f-acdb-dd5305955a2d",
+      "title": "Nepalese Rupee",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "NPR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "524"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rs"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Nepalese Rupee"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "5bb5bf6d-235e-42eb-8f75-e960c0775d95",
+      "title": "Netherlands Antillian Guilder",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ANG"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "532"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ƒ"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Netherlands Antillian Guilder"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "fd834e99-d333-4622-86f3-6083809fe822",
+      "title": "Cordoba Oro",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "NIO"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "558"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "C$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Cordoba Oro"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "c9f5318a-d642-43e0-8219-d7ae8fe01fcd",
+      "title": "Naira",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "NGN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "566"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₦"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Naira"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ed4ab137-1ec0-4d74-8eee-a6ad3813d30c",
+      "title": "Rial Omani",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "OMR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "512"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ر.ع."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rial Omani"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "413da732-0cca-4a87-a17b-eae9f9bf9cb5",
+      "title": "Pakistan Rupee",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "PKR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "586"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rs"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Pakistan Rupee"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "16b6bb24-98b0-490b-8845-1f8fcc29d1fc",
+      "title": "Balboa",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "PAB"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "590"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "B/."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Balboa"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "e15a45d0-0969-43fa-a391-f90e2a67835d",
+      "title": "Kina",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "PGK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "598"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Kina"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "7d45ade9-02c4-473e-9ba9-596f079a80f8",
+      "title": "Guarani",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "PYG"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "600"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₲"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Guarani"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ef4d034f-f96f-47d2-a9b5-12f2ffb7a881",
+      "title": "Nuevo Sol",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "PEN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "604"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "S/."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Nuevo Sol"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "580ba194-6863-4aa4-a93d-ca2895ae00f1",
+      "title": "Philippine Peso",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "PHP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "608"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₱"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Philippine Peso"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "a288f293-f38a-494a-add3-88fb08c87467",
+      "title": "Zloty",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "PLN"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "985"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "zł"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Zloty"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "d24f1d7c-8080-4b8e-b818-11e0d89b8306",
+      "title": "Qatari Rial",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "QAR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "634"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ر.ق"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Qatari Rial"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "60dc82e7-034b-464d-ac35-69c1ef1c7564",
+      "title": "New Leu",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "RON"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "946"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "L"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "New Leu"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1292faeb-027e-4639-afde-b5d47668f9cf",
+      "title": "Russian Ruble",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "RUB"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "643"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "р."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Russian Ruble"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "cc2b1adc-604a-4219-a0f1-3a24f7b62bb5",
+      "title": "Rwanda Franc",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "RWF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "646"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Fr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rwanda Franc"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "9bbc93b3-a2e4-4b14-9115-389732514f9a",
+      "title": "Saint Helena Pound",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SHP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "654"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "£"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Saint Helena Pound"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "768e0a6b-7811-4bae-aad1-1906989ef41f",
+      "title": "Tala",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "WST"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "882"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "T"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Tala"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "2c0d801e-9093-4ba2-81af-d6f5f3785a14",
+      "title": "Dobra",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "STD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "678"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Db"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Dobra"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "e4781b0a-33ff-4c6d-99d8-afffa1afc02d",
+      "title": "Saudi Riyal",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SAR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "682"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ر.س"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Saudi Riyal"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "b6be10f3-d7fe-42e1-8099-66ea055929e0",
+      "title": "Serbian Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "RSD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "941"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "дин."
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Serbian Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ff23d069-fd7e-4939-9cbb-d1820093bf7e",
+      "title": "Seychelles Rupee",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SCR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "690"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rs"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Seychelles Rupee"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "79740051-3079-4832-8bf4-1dd858815e7c",
+      "title": "Leone",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SLL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "694"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Le"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Leone"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "c1934212-361c-4611-95c9-ac946b548e59",
+      "title": "Singapore Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SGD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "702"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Singapore Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "37230523-00f4-4bd8-8cb9-1f1b6c9aa649",
+      "title": "Solomon Islands Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SBD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "090"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Solomon Islands Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "b2c14fde-3845-41b8-b500-9ea02849b1c5",
+      "title": "Somali Shilling",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SOS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "706"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Sh"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Somali Shilling"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "fde5f4fe-4de7-4868-9300-1667ecf1c659",
+      "title": "Sri Lanka Rupee",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "LKR"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "144"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Rs"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Sri Lanka Rupee"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1d116bc7-eceb-4b95-8237-74b896f745ee",
+      "title": "Sudanese Pound",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SDG"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "938"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "£"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Sudanese Pound"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "8c35a61d-9fc5-4e7a-940f-399973048500",
+      "title": "Surinam Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SRD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "968"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Surinam Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "24cf3c80-71d0-4628-ac69-b788ab96d615",
+      "title": "Lilangeni",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SZL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "748"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "L"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Lilangeni"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1560e650-cbe4-4022-b47c-aedf33049514",
+      "title": "Swedish Krona",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SEK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "752"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "kr"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Swedish Krona"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "06494e7d-5b85-4b34-8ad0-99ad987e5373",
+      "title": "WIR France",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CHW"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "948"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "WIR France"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "958b00c9-9e84-44ef-a24f-a46a49a7a1e7",
+      "title": "WIR Euro",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "CHE"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "947"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "WIR Euro"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "73437e86-8e8c-427c-8504-bb7990e44db4",
+      "title": "Syrian Pound",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SYP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "760"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ل.س"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Syrian Pound"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "3e9633c2-8308-4e38-a20b-da6ddc0f428b",
+      "title": "New Taiwan Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TWD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "901"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "New Taiwan Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "3032eece-cd24-40a7-bd56-33afdb5896f1",
+      "title": "Somoni",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TJS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "972"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "SM"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Somoni"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "ada947e3-f396-4f3e-a8ee-2c05586fe4e3",
+      "title": "Tanzanian Shilling",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TZS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "834"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Sh"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Tanzanian Shilling"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1e5230b4-8999-4b5e-85c2-5e021b1f5628",
+      "title": "Baht",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "THB"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "764"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "฿"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Baht"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "6280020b-a838-4d0d-9f23-464762ff233c",
+      "title": "Pa'anga",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TOP"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "776"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "T$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Pa'anga"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "969ad5dd-e6a1-4447-ad19-91b820810516",
+      "title": "Trinidad and Tobago Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TTD"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "780"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Trinidad and Tobago Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "09f05e73-cc99-4f20-afeb-44240bd61d3b",
+      "title": "Tunisian Dinar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TND"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "788"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "د.ت"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Tunisian Dinar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "732f634c-ab90-4f74-a50f-8e6b96404908",
+      "title": "Turkish Lira",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TRY"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "949"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TL"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Turkish Lira"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "95616bf6-7b47-4596-878b-14dd8fd2b255",
+      "title": "Manat",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "TMT"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "934"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Manat"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "7342ef69-c94b-4c1d-a9b2-4d1b084df788",
+      "title": "Uganda Shilling",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "UGX"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "800"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Sh"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Uganda Shilling"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "d72080ec-b79b-4d45-bc71-e7132c43d321",
+      "title": "Hryvnia",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "UAH"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "980"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₴"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Hryvnia"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "f19a23ff-83a4-4d06-9add-3bf4e6ccc058",
+      "title": "UAE Dirham",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "AED"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "784"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "د.إ"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "UAE Dirham"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "1dab7ebf-fec4-41da-81c1-077cf6665b82",
+      "title": "Peso Uruguayo",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "UYU"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "858"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "$"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Peso Uruguayo"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "3a3f512a-2b81-436a-a56b-0a61e1e833fb",
+      "title": "Uruguay Peso en Unidades Indexadas",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "UYI"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "940"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Uruguay Peso en Unidades Indexadas"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "92f1163c-24a3-468e-a16c-c1f4c06bc55c",
+      "title": "Uzbekistan Sum",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "UZS"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "860"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Uzbekistan Sum"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "99bed5dc-81df-4d6e-9621-6d8cc1baa258",
+      "title": "Vatu",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "VUV"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "548"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Vt"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Vatu"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "2d6e09e2-2a0f-4122-a5d5-a7456428c6bf",
+      "title": "Bolivar Fuerte",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "VEF"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "937"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Bs F"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Bolivar Fuerte"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "e6c0dbd5-7be2-453d-9d5f-0cf1bbbbfa55",
+      "title": "Dong",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "VND"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "704"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "₫"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Dong"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "997f4b5a-7805-47b3-b38a-6a4fd2ab49d5",
+      "title": "Yemeni Rial",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "YER"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "886"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "﷼"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Yemeni Rial"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "fe800890-f628-4116-8969-563cf8da274e",
+      "title": "Zambian Kwacha",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ZMK"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "894"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ZK"
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Zambian Kwacha"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 1
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    },
+    {
+      "type": "element_hash",
+      "uuid": "9d91e05c-1173-40a5-b0ae-38309d5cb821",
+      "title": "Zimbabwe Dollar",
+      "version": 0.0003,
+      "format": "b702f8d9-c3e0-431e-9308-6b815e29030d",
+      "content": {
+        "political": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "true"
+        },
+        "iso": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "ZWL"
+        },
+        "iso_number": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "932"
+        },
+        "symbol": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        },
+        "name": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": "Zimbabwe Dollar"
+        },
+        "unit_multiplier": {
+          "type": "element_integer",
+          "version": 0.0,
+          "content": 100
+        },
+        "expression_format": {
+          "type": "element_text",
+          "version": 0.0,
+          "content": ""
+        }
+      }
+    }
+  ]
+}

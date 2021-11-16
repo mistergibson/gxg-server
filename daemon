@@ -1,0 +1,14 @@
+#!/bin/bash
+source /etc/profile
+the_path=`realpath $0`
+gxg_root=`dirname "$the_path"`
+cd $gxg_root
+if [ "$1" == "start" ]
+then
+    sudo -u www-data ./server start --quiet
+fi
+if [ "$1" == "stop" ]
+then
+    sudo -u www-data ./server stop
+fi
+exit 0
