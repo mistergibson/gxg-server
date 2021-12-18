@@ -5,10 +5,13 @@ gxg_root=`dirname "$the_path"`
 cd $gxg_root
 if [ "$1" == "start" ]
 then
+    touch "$gxg_root/System/Temporary/server.tty"
+    /bin/stty --file="$gxg_root/System/Temporary/server.tty"
     sudo -u www-data ./server start --quiet
 fi
 if [ "$1" == "stop" ]
 then
     sudo -u www-data ./server stop
+    /bin/rm -rf "$gxg_root/System/Temporary/server.tty"
 fi
 exit 0
