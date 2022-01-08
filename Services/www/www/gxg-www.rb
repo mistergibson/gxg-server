@@ -1107,7 +1107,27 @@ module GxGwww
                     response = [404, {"content-type" => "application/json"}, ({:result => false, :error => "Not Found.", :parameters => false}).to_json()]
                 end
             end
-            response            
+            response
+        end
+        #
+        def call_event(details={})
+            if self.closed?
+                response = [500, {"content-type" => "application/json"}, ({:result => false, :error => "Connector Closed.", :parameters => false}).to_json()]
+            else
+                the_service = ::GxG::SERVICES[(details[:service].to_s.downcase.to_sym)]
+                if the_service
+                    the_result = the_service.call_event(details[:op_frame], @credential)
+                    if the_result[:error]
+                        response = [500, {"content-type" => "application/json"}, ({:result => false, :error => the_result[:error], :parameters => false}).to_json()]
+                    else
+                        response = [200, {"content-type" => "application/json"}, (the_result.to_json]
+                    end
+                else
+                    # err - service not found
+                    response = [404, {"content-type" => "application/json"}, ({:result => false, :error => "Service #{details[:service].to_s} Not Found.", :parameters => false}).to_json()]
+                end
+            end
+            response
         end
         #
         def vfs_mkfile(details={})

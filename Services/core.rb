@@ -721,7 +721,7 @@ module GxG
         true
       end
       #
-      def call_event(operation_envelope=nil, credential=:"00000000-0000-4000-0000-000000000000")
+      def call_event(operation_envelope=nil, credential=(::GxG::DB[:administrator] || :"00000000-0000-4000-0000-000000000000"))
         result = nil
         if operation_envelope.is_a?(::Hash)
           the_event = operation_envelope.keys[0]
