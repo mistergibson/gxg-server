@@ -673,6 +673,22 @@ module GxGwww
                         else
                             log_warn("Abnormal PUT Body #{the_request.body.inspect}")
                         end
+                    when :post
+                        #
+                        if the_request.params["file"]
+                            if the_request.params["file"][:tempfile]
+                                temp_file = the_request.params["file"][:tempfile]
+                                if the_request.params["file"][:filename]
+                                    file_name  = the_request.params["file"][:filename]
+                                    if the_request.params["destination"]
+                                        destination = the_request.params["destination"]
+                                        operations = [{:upload_file => {:temp_file => temp_file, :file_name => file_name, :destination => destination}}]
+                                    end
+                                end
+                            end
+                            #
+                        end
+                        #
                     end
                     unless operations.is_a?(::Array)
                         operations = [(operations)]
@@ -1126,6 +1142,28 @@ module GxGwww
                     # err - service not found
                     response = [404, {"content-type" => "application/json"}, ({:result => false, :error => "Service #{details[:service].to_s} Not Found.", :parameters => false}).to_json()]
                 end
+            end
+            response
+        end
+        #
+        def upload_file(details={})
+            response = [500, {"content-type" => "application/json"}, ({:result => false, :error => "Unknown Error."}).to_json()]
+            # {:temp_file => temp_file, :file_name => file_name, :destination => destination}
+            begin
+                temp_dir = "/Temporary/#{::GxG::uuid_generate().to_s}"
+                download_path = "#{temp_dir + "/" + (details[:file_name] || "Untitled").to_s}"
+                final_path =  "#{details[:destination].to_s + "/" + (details[:file_name] || "Untitled").to_s}"
+                GxG::SERVICES[:core][:resources].create_directory(temp_dir, ::GxG::DB[:administrator])
+                GxG::SERVICES[:core][:resources].create(download_path, ::GxG::DB[:administrator])
+                handle = GxG::SERVICES[:core][:resources].open_writable(download_path, ::GxG::DB[:administrator])
+                handle[:resource].write details[:temp_file].read
+                GxG::SERVICES[:core][:resources].close(handle[:token])
+                GxG::SERVICES[:core][:resources].move(download_path, ::GxG::DB[:administrator], final_path)
+                GxG::SERVICES[:core][:resources].set_permissions(final_path, @credential, {:execute => false, :rename => true, :move => true, :destroy => true, :create => true, :write => true, :read=>true})
+                # 
+                response = [200, {"content-type" => "application/json"}, ({:result => true}).to_json()]
+            rescue Exception => the_error
+                response = [500, {"content-type" => "application/json"}, ({:result => false, :error => the_error.to_s}).to_json()]
             end
             response
         end
