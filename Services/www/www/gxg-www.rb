@@ -1152,19 +1152,86 @@ module GxGwww
             begin
                 temp_dir = "/Temporary/#{::GxG::uuid_generate().to_s}"
                 download_path = "#{temp_dir + "/" + (details[:file_name] || "Untitled").to_s}"
-                final_path =  "#{details[:destination].to_s + "/" + (details[:file_name] || "Untitled").to_s}"
-                GxG::SERVICES[:core][:resources].create_directory(temp_dir, ::GxG::DB[:administrator])
-                GxG::SERVICES[:core][:resources].create(download_path, ::GxG::DB[:administrator])
-                handle = GxG::SERVICES[:core][:resources].open_writable(download_path, ::GxG::DB[:administrator])
-                handle[:resource].write details[:temp_file].read
-                GxG::SERVICES[:core][:resources].close(handle[:token])
-                GxG::SERVICES[:core][:resources].move(download_path, ::GxG::DB[:administrator], final_path)
-                GxG::SERVICES[:core][:resources].set_permissions(final_path, @credential, {:execute => false, :rename => true, :move => true, :destroy => true, :create => true, :write => true, :read=>true})
-                # 
-                response = [200, {"content-type" => "application/json"}, ({:result => true}).to_json()]
+                #
+                if details[:destination].to_s[0..4] == "/User"
+                    if @credential == :"00000000-0000-4000-0000-000000000000"
+                        details[:destination] = ("/Public/www/" << details[:destination].to_s[5..-1]).gsub("//","/")
+                    else
+                        details[:destination] = ("/Users/#{@credential.to_s}/" << details[:destination].to_s[5..-1]).gsub("//","/")
+                        unless GxG::SERVICES[:core][:resources].home_mounted?(@credential)
+                            GxG::SERVICES[:core][:resources].home_mount(@credential)
+                        end
+                    end
+                else
+                    details[:destination] = ("/Public/www/" << details[:destination].to_s).gsub("//","/")
+                end
+                if GxG::SERVICES[:core][:resources].permissions(details[:destination], @credential)[:write] == true
+                    #
+                    final_path =  "#{details[:destination].to_s + "/" + (details[:file_name] || "Untitled").to_s}".gsub("//","/")
+                    GxG::SERVICES[:core][:resources].create_directory(temp_dir, ::GxG::DB[:administrator])
+                    GxG::SERVICES[:core][:resources].create(download_path, ::GxG::DB[:administrator])
+                    handle = GxG::SERVICES[:core][:resources].open_writable(download_path, ::GxG::DB[:administrator])
+                    handle[:resource].write details[:temp_file].read
+                    GxG::SERVICES[:core][:resources].close(handle[:token])
+                    GxG::SERVICES[:core][:resources].move(download_path, ::GxG::DB[:administrator], final_path)
+                    GxG::SERVICES[:core][:resources].set_permissions(final_path, @credential, {:execute => false, :rename => true, :move => true, :destroy => true, :create => true, :write => true, :read=>true})
+                    GxG::SERVICES[:core][:resources].destroy(temp_dir, ::GxG::DB[:administrator])
+                    # 
+                    response = [200, {"content-type" => "application/json"}, ({:result => true}).to_json()]
+                else
+                    response = [500, {"content-type" => "application/json"}, ({:result => false, :error => "You lack permissions to write."}).to_json()]
+                end
             rescue Exception => the_error
                 response = [500, {"content-type" => "application/json"}, ({:result => false, :error => the_error.to_s}).to_json()]
             end
+            response
+        end
+        #
+        def download_file(details={})
+            # {:path => "/path/to/object"}
+            response = [404, {"content-type" => "application/json"}, ({:result => false, :error => "Object Not Found."}).to_json()]
+            begin
+                #
+                temp_dir = "/Temporary/#{::GxG::uuid_generate().to_s}"
+                final_path = "#{temp_dir}/#{File.basename(details[:path])}"
+                #
+                if details[:path].to_s[0..4] == "/User"
+                    if @credential == :"00000000-0000-4000-0000-000000000000"
+                        details[:path] = ("/Public/www/" << details[:path].to_s[5..-1]).gsub("//","/")
+                    else
+                        details[:path] = ("/Users/#{@credential.to_s}/" << details[:path].to_s[5..-1]).gsub("//","/")
+                        unless GxG::SERVICES[:core][:resources].home_mounted?(@credential)
+                            GxG::SERVICES[:core][:resources].home_mount(@credential)
+                        end
+                    end
+                else
+                    details[:path] = ("/Public/www/" << details[:path].to_s).gsub("//","/")
+                end
+                #
+                # temp_file = "#{temp_dir}/#{File.basename((details[:path] || 'Untitled').to_s)}"
+                if GxG::SERVICES[:core][:resources].exist?(details[:path])
+                    profile = GxG::SERVICES[:core][:resources].profile(details[:path], @credential)
+                    if profile
+                        if profile[:permissions][:effective][:read] == true
+                            if GxG::SERVICES[:core][:resources].copy(details[:path], ::GxG::DB[:administrator], final_path)
+                                cache_profile = (GxG::SERVICES[:core][:resources].entries(temp_dir, ::GxG::DB[:administrator]) || []).first
+                                if cache_profile
+                                    handle = GxG::SERVICES[:core][:resources].open((temp_dir + "/" + cache_profile[:title]), ::GxG::DB[:administrator])
+                                    download_path = handle[:resource].path()
+                                    GxG::SERVICES[:core][:resources].close(handle[:token])
+                                    response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir} }]
+                                end
+                            else
+                                response = [500, {"content-type" => "application/json"}, ({:result => false, :error => "Failed to cache file."}).to_json()]
+                            end
+                        end
+                    end
+                    #
+                end
+            rescue Exception => the_error
+                response = [500, {"content-type" => "application/json"}, ({:result => false, :error => the_error.to_s}).to_json()]
+            end
+            #
             response
         end
         #
