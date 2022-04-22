@@ -32,4 +32,4 @@ ProxyPassMatch "/ws" ws://127.0.0.1:32767/ws
 
 ProxyPass / http://127.0.0.1:32767/
 
-ProxyPassReverse / http://127.0.0.1:32676/
+ProxyPassReverse / http://127.0.0.1:32767/
