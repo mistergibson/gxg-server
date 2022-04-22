@@ -1219,7 +1219,7 @@ module GxGwww
                                     handle = GxG::SERVICES[:core][:resources].open((temp_dir + "/" + cache_profile[:title]), ::GxG::DB[:administrator])
                                     download_path = handle[:resource].path()
                                     GxG::SERVICES[:core][:resources].close(handle[:token])
-                                    response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir} }]
+                                    response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir}}]
                                 end
                             else
                                 response = [500, {"content-type" => "application/json"}, ({:result => false, :error => "Failed to cache file."}).to_json()]

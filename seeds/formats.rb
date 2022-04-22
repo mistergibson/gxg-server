@@ -784,7 +784,7 @@ def seed_formats()
         :vertical_slider => {:uuid => :"2f169eaa-5f4f-4a87-a13b-97fc132fc749", :version => 0.0, :ufs => "org.gxg.gui.slider.vertical", :title => "Vertical Slider", :mime_types => []},
         :sticky => {:uuid => :"b4919664-673f-4c35-a46f-1e3dd65f1742", :version => 0.0, :ufs => "org.gxg.gui.sticky", :title => "Sticky", :mime_types => []},
         :sticky_container => {:uuid => :"dead9dce-6efc-48c8-903a-bdb4d1b8fc96", :version => 0.0, :ufs => "org.gxg.gui.sticky.container", :title => "Sticky Container", :mime_types => []},
-        :switch => {:uuid => :"eb933549-9f36-47e4-972e-2686098f6134", :version => 0.0, :ufs => "org.gxg.gui.switch", :title => "Switch", :mime_types => []},,
+        :switch => {:uuid => :"eb933549-9f36-47e4-972e-2686098f6134", :version => 0.0, :ufs => "org.gxg.gui.switch", :title => "Switch", :mime_types => []},
         :tab_set => {:uuid => :"49c5a2c6-a972-47c5-b4c9-33cfe3166b36", :version => 0.0, :ufs => "org.gxg.gui.tab.set", :title => "Tab Set", :mime_types => []},
         :tab_content => {:uuid => :"c5181355-0cc9-46fb-b7ed-8efd42a85a80", :version => 0.0, :ufs => "org.gxg.gui.tab.content", :title => "Tab Content", :mime_types => []},
         :thumbnail => {:uuid => :"6459fa8a-6d4a-407d-ad22-a790382091fc", :version => 0.0, :ufs => "org.gxg.gui.thumbnail", :title => "Thumbnail", :mime_types => []},
