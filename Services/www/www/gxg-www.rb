@@ -1215,6 +1215,7 @@ module GxGwww
                     profile = GxG::SERVICES[:core][:resources].profile(details[:path], @credential)
                     if profile
                         if profile[:permissions][:effective][:read] == true
+                            GxG::SERVICES[:core][:resources].create_directory(temp_dir, ::GxG::DB[:administrator])
                             if GxG::SERVICES[:core][:resources].copy(details[:path], ::GxG::DB[:administrator], final_path)
                                 cache_profile = (GxG::SERVICES[:core][:resources].entries(temp_dir, ::GxG::DB[:administrator]) || []).first
                                 if cache_profile
