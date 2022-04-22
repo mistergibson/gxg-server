@@ -1136,7 +1136,7 @@ module GxGwww
                     if the_result[:error]
                         response = [500, {"content-type" => "application/json"}, ({:result => false, :error => the_result[:error], :parameters => false}).to_json()]
                     else
-                        response = [200, {"content-type" => "application/json"}, (the_result.to_json]
+                        response = [200, {"content-type" => "application/json"}, (the_result.to_json)]
                     end
                 else
                     # err - service not found
