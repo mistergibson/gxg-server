@@ -1223,11 +1223,17 @@ module GxGwww
                                     download_path = handle[:resource].path()
                                     GxG::SERVICES[:core][:resources].close(handle[:token])
                                     response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir}}]
+                                else
+                                    raise "Failed to get cache profile."
                                 end
                             else
                                 response = [500, {"content-type" => "application/json"}, ({:result => false, :error => "Failed to cache file."}).to_json()]
                             end
+                        else
+                            response = [403, {"content-type" => "application/json"}, ({:result => false, :error => "You don't have read access."}).to_json()]
                         end
+                    else
+                        raise "Failed to get profile."
                     end
                     #
                 end
