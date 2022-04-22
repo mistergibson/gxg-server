@@ -1190,6 +1190,7 @@ module GxGwww
         def download_file(details={})
             # {:path => "/path/to/object"}
             response = [404, {"content-type" => "application/json"}, ({:result => false, :error => "Object Not Found."}).to_json()]
+            puts "Download Got: #{details.inspect}"
             begin
                 #
                 temp_dir = "/Temporary/#{::GxG::uuid_generate().to_s}"
@@ -1208,6 +1209,7 @@ module GxGwww
                     details[:path] = ("/Public/www/" << details[:path].to_s).gsub("//","/")
                 end
                 #
+                puts "Download Path: #{details.inspect}"
                 # temp_file = "#{temp_dir}/#{File.basename((details[:path] || 'Untitled').to_s)}"
                 if GxG::SERVICES[:core][:resources].exist?(details[:path])
                     profile = GxG::SERVICES[:core][:resources].profile(details[:path], @credential)
