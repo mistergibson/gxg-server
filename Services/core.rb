@@ -871,7 +871,7 @@ module GxG
       end
       #
       def rename(the_path="", credential=:"00000000-0000-4000-0000-000000000000", new_name="")
-        result = {:result => false}
+        result = nil
         if self.busy?(the_path)
           result = {:result => false, :error => "Busy", :error_code => :busy}
         end
@@ -887,7 +887,7 @@ module GxG
       end
       #
       def copy(the_path="", credential=:"00000000-0000-4000-0000-000000000000", new_path="")
-        result = {:result => false}
+        result = nil
         if self.busy?(the_path)
           result = {:result => false, :error => "Busy", :error_code => :busy}
         end
@@ -903,7 +903,7 @@ module GxG
       end
       #
       def move(the_path="", credential=:"00000000-0000-4000-0000-000000000000", new_path="")
-        result = {:result => false}
+        result = nil
         if self.busy?(the_path)
           result = {:result => false, :error => "Busy", :error_code => :busy}
         end
@@ -919,7 +919,7 @@ module GxG
       end
       #
       def destroy(the_path="", credential=:"00000000-0000-4000-0000-000000000000")
-        result = {:result => false}
+        result = nil
         if self.busy?(the_path)
           result = {:result => false, :error => "Busy", :error_code => :busy}
         end
