@@ -928,8 +928,14 @@ module GxG
             result = {:result => false, :error => "Permission Error", :error_code => :permission}
           end
         end
-        unless result          
-          result = {:result => ::GxG::VFS.destroy(the_path, credential)}
+        unless result
+          the_profile = self.profile(the_path, credential)
+          if [:virtual_directory, :directory, :persisted_array].include?(the_profile[:type])
+            result = {:result => ::GxG::VFS.rmdir(the_path)}
+          else
+            result = {:result => ::GxG::VFS.rmfile(the_path)}
+          end
+          # xxx
         end
         result
       end
