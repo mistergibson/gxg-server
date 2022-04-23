@@ -967,7 +967,8 @@ module GxG
       end
       #
       def create_directory(the_path="", credential=:"00000000-0000-4000-0000-000000000000", options={})
-        result = {:result => false}
+        #result = {:result => false}
+        result = nil
         if self.permissions(File.dirname(the_path), credential)[:create] == false
           result = {:result => false, :error => "Permission Error", :error_code => :permission}
         end
