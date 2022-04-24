@@ -1014,6 +1014,8 @@ module GxGwww
             result << ("\t\t<script id=\"jquery\" type=\"text/javascript\" src=\"" + GxG::SERVICES[:www].configuration[:relative_url].to_s + "/javascript/vendor/jquery.js\"></script>\n")
             result << ("\t\t<script id=\"what.input\" type=\"text/javascript\" src=\"" + GxG::SERVICES[:www].configuration[:relative_url].to_s + "/javascript/vendor/what-input.js\"></script>\n")
             result << ("\t\t<script id=\"foundation\" type=\"text/javascript\" src=\"" + GxG::SERVICES[:www].configuration[:relative_url].to_s + "/javascript/vendor/foundation.js\"></script>\n")
+            result << ("\t\t<script id=\"ponyfill\" type=\"text/javascript\" src=\"" + GxG::SERVICES[:www].configuration[:relative_url].to_s + "/javascript/vendor/ponyfill.min.js\"></script>\n")
+            result << ("\t\t<script id=\"streamsaver\" type=\"text/javascript\" src=\"" + GxG::SERVICES[:www].configuration[:relative_url].to_s + "/javascript/vendor/StreamSaver.min.js\"></script>\n")
             result << ("\t\t<script>$(document).foundation();</script>\n")
             result << ("\t\t<script id=\"kute.animation\" type=\"text/javascript\" src=\"" + GxG::SERVICES[:www].configuration[:relative_url].to_s + "/javascript/kute/kute.min.js\"></script>\n")
             result << ("\t\t<script id=\"kute.attr\" type=\"text/javascript\" src=\"" + GxG::SERVICES[:www].configuration[:relative_url].to_s + "/javascript/kute/kute-attr.min.js\"></script>\n")
