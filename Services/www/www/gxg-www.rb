@@ -1226,7 +1226,7 @@ module GxGwww
                                         # download_path = handle[:resource].path()
                                         response = [200, {"content-type" => "application/json"}, ({:result => true, :file_name => cache_profile[:title], :data => handle[:resource].read.encode64}).to_json()]
                                         GxG::SERVICES[:core][:resources].close(handle[:token])
-                                        GxG::SERVICES[:core][:resources].destroy(rtemp_dir, ::GxG::DB[:administrator])
+                                        GxG::SERVICES[:core][:resources].destroy(temp_dir, ::GxG::DB[:administrator])
                                         # response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir}}]
                                     else
                                         raise "Failed to get cache profile."
