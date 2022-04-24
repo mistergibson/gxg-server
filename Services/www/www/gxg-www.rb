@@ -1222,10 +1222,15 @@ module GxGwww
                                 cache_profile = (GxG::SERVICES[:core][:resources].entries(temp_dir, ::GxG::DB[:administrator]) || []).first
                                 if cache_profile
                                     handle = GxG::SERVICES[:core][:resources].open((temp_dir + "/" + cache_profile[:title]), ::GxG::DB[:administrator])
-                                    # download_path = handle[:resource].path()
-                                    response = [200, {"content-type" => "application/json"}, ({:result => true, :file_name => cache_profile[:title], :data => handle[:resource].read}).to_json()]
-                                    GxG::SERVICES[:core][:resources].close(handle[:token])
-                                    # response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir}}]
+                                    if handle
+                                        # download_path = handle[:resource].path()
+                                        response = [200, {"content-type" => "application/json"}, ({:result => true, :file_name => cache_profile[:title], :data => handle[:resource].read}).to_json()]
+                                        GxG::SERVICES[:core][:resources].close(handle[:token])
+                                        GxG::SERVICES[:core][:resources].destroy(rtemp_dir, ::GxG::DB[:administrator])
+                                        # response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir}}]
+                                    else
+                                        raise "Failed to get cache profile."
+                                    end
                                 else
                                     raise "Failed to get cache profile."
                                 end
@@ -1241,6 +1246,7 @@ module GxGwww
                     #
                 end
             rescue Exception => the_error
+                log_error({:error => the_error})
                 response = [500, {"content-type" => "application/json"}, ({:result => false, :error => the_error.to_s}).to_json()]
             end
             #
