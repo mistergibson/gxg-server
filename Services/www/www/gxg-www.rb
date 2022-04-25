@@ -1224,7 +1224,7 @@ module GxGwww
                                     handle = GxG::SERVICES[:core][:resources].open((temp_dir + "/" + cache_profile[:title]), ::GxG::DB[:administrator])
                                     if handle
                                         # download_path = handle[:resource].path()
-                                        response = [200, {"content-type" => "application/json"}, ({:result => {:file_name => cache_profile[:title], :data => handle[:resource].read.encode64}}).to_json()]
+                                        response = [200, {"content-type" => "application/json"}, ({:result => {:file_name => cache_profile[:title], :file_data => handle[:resource].read.encode64}}).to_json()]
                                         GxG::SERVICES[:core][:resources].close(handle[:token])
                                         GxG::SERVICES[:core][:resources].destroy(temp_dir, ::GxG::DB[:administrator])
                                         # response = [-255, {"content-type" => "application/hash"}, {:result => {:file => download_path, :vfs_dir => temp_dir}}]
