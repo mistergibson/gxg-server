@@ -558,7 +558,6 @@ module GxGwww
             #
             def refresh_vfs_tree_profile(the_path=nil,&block)
                 self.fetch_vfs_tree_profile(the_path) do |current_profile|
-                    # current_profile[:content] = {}
                     GxG::CONNECTION.entries({:location => (the_path.to_s)}) do |response|
                         if response.is_a?(::Hash)
                             if response[:result].is_a?(::Array)
@@ -860,11 +859,11 @@ module GxGwww
             end
             ".encode64
             # Detail Pane:
-            detail_text = {:component=>"text", :options=> {:title => "detail_info", :content => "Details:", :style => {:"font-size" => "10px", :padding => "0px 0px 0px 5px"}}, :content => [], :script => ""}
-            detail_cell = {:component=>"block_table_cell", :options=> {}, :content => [(detail_text)], :script => ""}
-            detail_row = {:component=>"block_table_row", :options=> {}, :content => [(detail_cell)], :script => ""}
+            detail_text = {:component=>"org.gxg.gui.text.area", :options=> {:title => "detail_info", :content => "Details:", :style => {:"font-size" => "10px", :padding => "0px 0px 0px 5px"}}, :content => [], :script => ""}
+            detail_cell = {:component=>"org.gxg.gui.block.table.cell", :options=> {}, :content => [(detail_text)], :script => ""}
+            detail_row = {:component=>"org.gxg.gui.block.table.row", :options=> {}, :content => [(detail_cell)], :script => ""}
             #
-            details = {:component=>"block_table", :options=>{:title => "details", :track => {:width => "20%", :height => "100%"}, :style => {:clear => "both", :width => "100%", :height => "100%", :"overflow-y" => "scroll", :padding => "0px", :border => "1px", :"border-color" => "#c2c2c2", :"background-color" => "#c2c2c2", :margin => "0px"}}, :content=>[(detail_row)], :script=>""}
+            details = {:component=>"org.gxg.gui.block.table", :options=>{:title => "details", :track => {:width => "20%", :height => "100%"}, :style => {:clear => "both", :width => "100%", :height => "100%", :"overflow-y" => "scroll", :padding => "0px", :border => "1px", :"border-color" => "#c2c2c2", :"background-color" => "#c2c2c2", :margin => "0px"}}, :content=>[(detail_row)], :script=>""}
             details[:script] = "
             def update_appearance(the_frame=nil)
                 #
@@ -877,7 +876,7 @@ module GxGwww
                 readout_text = ''
                 #
                 if the_frame
-                    the_path = the_frame.gxg_get_attribute(:nodepath)
+                    the_path = the_frame.settings()[:nodepath]
                     if the_window
                         menu_bar = the_window.find_child('object_browser_menu',true)
                         the_application = the_window.application
@@ -1012,7 +1011,7 @@ module GxGwww
             end
             ".encode64
             #
-            listview = {:component=>"list", :options=>{:title => "list_view", :style => {:clear => "both", :"list-style" => "none", :padding => "0px", :margin => "0px"}}, :content=>[], :script=>""}
+            listview = {:component=>"org.gxg.gui.list", :options=>{:title => "list_view", :style => {:clear => "both", :"list-style" => "none", :padding => "0px", :margin => "0px"}}, :content=>[], :script=>""}
             listview[:script] = "
             def selection()
                 @selection
@@ -1022,13 +1021,13 @@ module GxGwww
                 the_window = self.window()
                 if the_frame
                     if @selection
-                        @selection.gxg_merge_style({:'background-color' => '#f2f2f2'})
+                        @selection.merge_style({:'background-color' => '#f2f2f2'})
                         @selection = nil
                     end
                     unless @selection
                         @selection = the_frame
                     end
-                    @selection.gxg_merge_style({:'background-color' => '#87acd5'})
+                    @selection.merge_style({:'background-color' => '#87acd5'})
                 else
                     @selection = nil
                 end
@@ -1044,7 +1043,7 @@ module GxGwww
             def open_item(the_frame)
                 if the_frame
                     self.select_item(the_frame)
-                    the_path = the_frame.gxg_get_attribute(:nodepath)
+                    the_path = the_frame.settings()[:nodepath]
                     if the_path.is_a?(::String)
                         the_window = the_frame.window()
                         if the_window
@@ -1123,14 +1122,14 @@ module GxGwww
                         when 'directory', 'virtual_directory', 'persisted_array'
                             the_icon = GxG::DISPLAY_DETAILS[:object].theme_icon('folder.svg')
                         when 'file', 'application', 'library'
-                            # sub-case mime type for better file icons ??
+                            # TODO: sub-case mime type for better file icons ??
                             the_icon = GxG::DISPLAY_DETAILS[:object].theme_icon('file.svg')
                         when 'persisted_hash'
                             the_icon = GxG::DISPLAY_DETAILS[:object].theme_icon('object.svg')
                         end
                         #
-                        node_frame = {:component=>'block_table', :options=>{}, :content=>[], :script=>''}
-                        frame_row_one = {:component=>'block_table_row', :options=>{:nodepath => (the_path + '/' + the_profile[:title])}, :content=>[], :script=>''}
+                        node_frame = {:component=>'org.gxg.gui.block.table', :options=>{}, :content=>[], :script=>''}
+                        frame_row_one = {:component=>'org.gxg.gui.block.table.row', :options=>{:nodepath => (the_path + '/' + the_profile[:title])}, :content=>[], :script=>''}
                         frame_row_one[:script] = \"
                         on(:dblclick) do |event|
                             the_window = self.window()
@@ -1152,17 +1151,17 @@ module GxGwww
                             end
                         end
                         \".encode64
-                        node_icon_cell = {:component=>'block_table_cell', :options=>{:style => {:width => 32}}, :content=>[], :script=>''}
-                        node_label_cell = {:component=>'block_table_cell', :options=>{}, :content=>[], :script=>''}
-                        icon = {:component=>'image', :options=>{:src=>(the_icon) , :width=>32, :height=>32, :style => {:clear => 'both'}}, :content=>[], :script=>''}
-                        title = {:component=>'label', :options=>{:content => the_profile[:title], :style => {:'font-size' => '16px', :'text-align' => 'left', :float => 'left', :'vertical-align' => 'middle', :margin => '2px', :padding => '2px'}}, :content=>[], :script=>''}
+                        node_icon_cell = {:component=>'org.gxg.gui.block.table.cell', :options=>{:style => {:width => 32}}, :content=>[], :script=>''}
+                        node_label_cell = {:component=>'org.gxg.gui.block.table.cell', :options=>{}, :content=>[], :script=>''}
+                        icon = {:component=>'org.gxg.gui.image', :options=>{:src=>(the_icon) , :width=>32, :height=>32, :style => {:clear => 'both'}}, :content=>[], :script=>''}
+                        title = {:component=>'org.gxg.gui.label', :options=>{:content => the_profile[:title], :style => {:'font-size' => '16px', :'text-align' => 'left', :float => 'left', :'vertical-align' => 'middle', :margin => '2px', :padding => '2px'}}, :content=>[], :script=>''}
                         # integrate item subcomponents:
                         node_icon_cell[:content] = [(icon)]
                         node_label_cell[:content] = [(title)]
                         frame_row_one[:content] = [(node_icon_cell),(node_label_cell)]
                         node_frame[:content] = [(frame_row_one)]
                         #
-                        the_item = {:component=>'list_item', :options=>{:style => {:display => 'list-item', :'white-space' => 'nowrap'}}, :content=>[(node_frame)], :script=>''}
+                        the_item = {:component=>'org.gxg.gui.list.item', :options=>{:style => {:display => 'list-item', :'white-space' => 'nowrap'}}, :content=>[(node_frame)], :script=>''}
                         #
                         build_stack << the_item
                     end
@@ -1171,30 +1170,30 @@ module GxGwww
                         the_child.destroy
                     end
                     #
-                    GxG::DISPLAY_DETAILS[:object].build_components([{:parent => self.parent, :record => {:content => build_stack}, :element => self}])
+                    page.build_components(self.parent, build_stack)
                     #
                     self.select_item(nil)
                 end
             end
             ".encode64
-            list_div = {:component=>"block", :options=>{:title => "list_div", :track => {:width => "40%", :height => "100%"}, :style => {:clear => "both", :height => "100%", :"overflow-y" => "scroll", :border => "1px", :"border-color" => "#c2c2c2", :margin => "0px"}}, :content=>[(listview)], :script=>""}
+            list_div = {:component=>"org.gxg.gui.block", :options=>{:title => "list_div", :track => {:width => "40%", :height => "100%"}, :style => {:clear => "both", :height => "100%", :"overflow-y" => "scroll", :border => "1px", :"border-color" => "#c2c2c2", :margin => "0px"}}, :content=>[(listview)], :script=>""}
             #
             tree = {:component=>"tree", :options=>{:title => "tree_view", :track => {:width => "40%", :height => "100%"}, :style => {:clear => "both", :overflow => "scroll", :border => "1px", :"border-color" => "#c2c2c2", :padding => "0px", :margin => "0px"}}, :content=>[], :script=>""}
             #
-            form_table = {:component=>"block_table", :options=>{:style => {:overflow => "hidden", :clear => "both", :width => "100%", :height => "100%", :padding => "0px", :margin => "0px"}}, :content=>[], :script=>""}
-            form_row = {:component=>"block_table_row", :options=>{:style => {:overflow => "hidden", :width => "100%", :height => "100%", :padding => "0px", :margin => "0px"}}, :content=>[], :script=>""}
-            form_cell_one = {:component=>"block_table_cell", :options=>{:style => {:overflow => "hidden", :width => "40%", :height => "100%", :float => "left", :padding => "0px", :margin => "0px", :position => "relative"}}, :content=>[], :script=>""}
+            form_table = {:component=>"org.gxg.gui.block.table", :options=>{:style => {:overflow => "hidden", :clear => "both", :width => "100%", :height => "100%", :padding => "0px", :margin => "0px"}}, :content=>[], :script=>""}
+            form_row = {:component=>"org.gxg.gui.block.table.row", :options=>{:style => {:overflow => "hidden", :width => "100%", :height => "100%", :padding => "0px", :margin => "0px"}}, :content=>[], :script=>""}
+            form_cell_one = {:component=>"org.gxg.gui.block.table.cell", :options=>{:style => {:overflow => "hidden", :width => "40%", :height => "100%", :float => "left", :padding => "0px", :margin => "0px", :position => "relative"}}, :content=>[], :script=>""}
             form_cell_one[:content] = [(tree)]
-            form_cell_two = {:component=>"block_table_cell", :options=>{:style => {:overflow => "hidden", :width => "40%", :height => "100%", :float => "left", :padding => "0px", :margin => "0px", :position => "relative"}}, :content=>[], :script=>""}
+            form_cell_two = {:component=>"org.gxg.gui.block.table.cell", :options=>{:style => {:overflow => "hidden", :width => "40%", :height => "100%", :float => "left", :padding => "0px", :margin => "0px", :position => "relative"}}, :content=>[], :script=>""}
             form_cell_two[:content] = [(list_div)]
-            form_cell_three = {:component=>"block_table_cell", :options=>{:style => {:overflow => "hidden", :width => "20%", :height => "100%", :float => "right", :padding => "0px", :margin => "0px", :position => "relative"}}, :content=>[], :script=>""}
+            form_cell_three = {:component=>"org.gxg.gui.block.table.cell", :options=>{:style => {:overflow => "hidden", :width => "20%", :height => "100%", :float => "right", :padding => "0px", :margin => "0px", :position => "relative"}}, :content=>[], :script=>""}
             form_cell_three[:content] = [(details)]
             form_row[:content] = [(form_cell_one),(form_cell_two),(form_cell_three)]
             form_table[:content] = [(form_row)]
             #
-            viewport = {:component=>"application_viewport", :options=>{:title => "browser_viewport", :style => {:overflow => "hidden", :width => "100%", :height => "100%"}}, :content=>[(form_table)], :script=>""}
+            viewport = {:component=>"org.gxg.gui.application.viewport", :options=>{:title => "browser_viewport", :style => {:overflow => "hidden", :width => "100%", :height => "100%"}}, :content=>[(form_table)], :script=>""}
             #
-            window = {:component => "window", :options => {:window_title => "Object Browser", :menu => "object_browser_menu", :top => 0, :left => 0, :width => 600, :height => 300, :scroll => false, :states => {:hidden => true}}, :script => "", :content => [(viewport)]}
+            window = {:component => "org.gxg.gui.window", :options => {:window_title => "Object Browser", :menu => "object_browser_menu", :top => 0, :left => 0, :width => 600, :height => 300, :scroll => false, :states => {:hidden => true}}, :script => "", :content => [(viewport)]}
             #
             puts "Building Main Window ..."
             persisted_window = GxG::DB[:roles][:software].try_persist(window, GxG::DB[:administrator])
@@ -1237,7 +1236,7 @@ module GxGwww
                         list_view = the_window.find_child('list_view')
                         if list_view
                             if list_view.selection()
-                                the_selection = list_view.selection().gxg_get_attribute(:nodepath)
+                                the_selection = list_view.selection().settings()[:nodepath]
                             end
                         end
                         tree_view = the_window.find_child('tree_view')
@@ -2452,7 +2451,7 @@ module GxGwww
             # GxGwww::Setup::setup_switcher_app()
             # GxGwww::Setup::setup_menu_app()
             # GxGwww::Setup::setup_login_app()
-            # GxGwww::Setup::setup_browser_app()
+            GxGwww::Setup::setup_browser_app()
             GxGwww::Setup::setup_index_page()
             # GxGwww::Setup::setup_setup_page()
             true

@@ -113,13 +113,7 @@ class Node0 < Sinatra::Application
     #   end
     # ### Implementation of the verbs:
     get '*' do
-        response = GxG::SERVICES[:www][:receiver].handle_request(:get, request, session)
-        if response[0] == -255
-            send_file(response[2][:result][:file], {:disposition => 'attachment', :filename => File.basename(response[2][:result][:file])})
-            GxG::SERVICES[:core][:resources].destroy(response[2][:result][:vfs_dir], ::GxG::DB[:administrator])
-            response = [200, {"content-type" => "application/json"}, {:result => true}.to_json()]
-        end
-        response
+        GxG::SERVICES[:www][:receiver].handle_request(:get, request, session)
     end
     #
     put '*' do
