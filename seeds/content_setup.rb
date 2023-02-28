@@ -326,7 +326,8 @@ module GxGwww
                 :".tr"=>{:display=>"table-row", :margin=>0, :padding=>0},
                 :".td"=>{:display=>"table-cell", :margin=>0, :padding=>0},
                 :".default-background-color" => {:"background-color" => "#f2f2f2"},
-                :".default-highlite-color" => {:"background-color" => "#87acd5"}
+                :".default-highlite-color" => {:"background-color" => "#87acd5"},
+                :"menu-item-disabled" => {:color => "#655e7a"}
             }
             #
             if GxG::VFS.exist?("/Public/www/content/themes/setup")
@@ -389,7 +390,8 @@ module GxGwww
                 :".tr"=>{:display=>"table-row", :margin=>0, :padding=>0},
                 :".td"=>{:display=>"table-cell", :margin=>0, :padding=>0},
                 :".default-background-color" => {:"background-color" => "#f2f2f2"},
-                :".default-highlite-color" => {:"background-color" => "#87acd5"}
+                :".default-highlite-color" => {:"background-color" => "#87acd5"},
+                :"menu-item-disabled" => {:color => "#655e7a"}
             }
             #
             if GxG::VFS.exist?("/Public/www/content/themes/default")

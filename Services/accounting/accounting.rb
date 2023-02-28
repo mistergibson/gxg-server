@@ -835,18 +835,22 @@ accounting_service = ::GxG::Services::Service.new(:accounting)
 # ### Define Public Command Interface:
 accounting_service.on(:start, {:description => "Accounting Service Start", :usage => "{ :start => nil }"}) do
   ::GxG::SERVICES[:accounting].start
+  ::GxG::SERVICES[:accounting].publish_api
 end
 accounting_service.on(:stop, {:description => "Accounting Service Stop", :usage => "{ :stop => nil }"}) do
   ::GxG::SERVICES[:accounting].stop
+  ::GxG::SERVICES[:accounting].unpublish_api
 end
 accounting_service.on(:restart, {:description => "Accounting Service Restart", :usage => "{ :restart => nil }"}) do
   ::GxG::SERVICES[:accounting].restart
 end
 accounting_service.on(:pause, {:description => "Accounting Service Pause", :usage => "{ :pause => nil }"}) do
   ::GxG::SERVICES[:accounting].pause
+  ::GxG::SERVICES[:accounting].unpublish_api
 end
 accounting_service.on(:resume, {:description => "Accounting Service Resume", :usage => "{ :resume => nil }"}) do
   ::GxG::SERVICES[:accounting].resume
+  ::GxG::SERVICES[:accounting].publish_api
 end
 # ### Define Internal Service Control Events:
 accounting_service.on(:at_start, {:description => "Accounting Startup", :usage => "{ :at_start => (service-object) }"}) do |service, credential|

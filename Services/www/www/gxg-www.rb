@@ -16,7 +16,194 @@ module GxGwww
         end
         the_value
     end
+    # ### API toolbox
+    API = {}
+    API_SESSIONS = {}
+    API_THREAD_SAFETY = ::Mutex.new
+    def self.publish_api(the_service=nil, the_path=nil)
+        if the_service && the_path
+            the_controller = ::GxGwww::APIController.new(the_service, the_path)
+            if the_controller
+                ::GxGwww::API_THREAD_SAFETY.synchronize {
+                    ::GxGwww::API[(the_path.to_sym)] = the_controller
+                }
+                true
+            else
+                false
+            end
+        else
+            false
+        end
+    end
     #
+    def self.unpublish_api(the_path="/unknown")
+        if the_path
+            ::GxGwww::API_THREAD_SAFETY.synchronize {
+                ::GxGwww::API.delete(the_path.to_sym)
+            }
+        end
+        true
+    end
+    #
+    def self.api_login(session_id=nil, credential=:"00000000-0000-4000-0000-000000000000")
+        if session_id
+            ::GxGwww::API_THREAD_SAFETY.synchronize {
+                ::GxGwww::API_SESSIONS[(session_id.to_sym)] = credential
+            }
+            true
+        else
+            false
+        end
+    end
+    #
+    def self.api_logout(session_id=nil)
+        if session_id
+            ::GxGwww::API_THREAD_SAFETY.synchronize {
+                ::GxGwww::API_SESSIONS.delete(session_id.to_sym)
+            }
+            true
+        else
+            false
+        end
+    end
+    #
+    def self.api_credential(session_id=nil)
+        result = :"00000000-0000-4000-0000-000000000000"
+        if session_id
+            ::GxGwww::API_THREAD_SAFETY.synchronize {
+                result = (::GxGwww::API_SESSIONS[(session_id.to_sym)] || :"00000000-0000-4000-0000-000000000000")
+            }
+        end
+        result
+    end
+    #
+    class APIController
+        def initialize(the_service=nil, the_path="/unknown")
+            @service = the_service
+            @path = the_path
+        end
+        def service
+            @service
+        end
+        def path
+            @path
+        end
+        #
+        def process(the_method=nil, the_request=nil, the_session=nil)
+            credential = ::GxGwww::api_credential(the_session['session_id'])
+            # Pre-processing
+            response = nil
+            operation = nil
+            begin
+                if the_method
+                    case the_method
+                    when :get
+                        if the_request["details"].to_s == "eyJpbnRyb2R1Y3Rpb24iOnRydWV9"
+                            response = [200, {"content-type" => "application/text"}, ({:csrf => the_session["csrf"]}.gxg_export.to_json.encode64)]
+                        else
+                            operation = (::JSON::parse(URI.unescape(URI.unescape(the_request.params["details"].to_s.decode64.decrypt(the_session["csrf"]))), {:symbolize_names => true}))
+                            unless operation.is_a?(::Hash)
+                                response = [500, {"content-type" => "application/text"}, "Malformed query."]
+                            end
+                        end
+                    when :put
+                        if the_request.body.respond_to?(:rewind) && the_request.body.respond_to?(:read)
+                            the_request.body.rewind
+                            operation = (::JSON::parse(URI.unescape(URI.unescape(the_request.body.read().to_s.decode64.decrypt(the_session["csrf"]))), {:symbolize_names => true}))
+                            unless operation.is_a?(::Hash)
+                                response = [500, {"content-type" => "application/text"}, "Malformed payload."]
+                            end
+                        else
+                            log_warn("Abnormal PUT Body #{the_request.body.inspect}")
+                            response = [500, {"content-type" => "application/text"}, "Malformed payload."]
+                        end
+                    else
+                        response = [500, {"content-type" => "application/text"}, "Provide a get or put method."]
+                    end
+                else
+                    response = [500, {"content-type" => "application/text"}, "No http method provided."]
+                end
+            rescue Exception => the_error
+                response = [500, {"content-type" => "application/text"}, the_error.to_s]
+            end
+            # Processing
+            unless response
+                response = [403, {"content-type" => "application/text"}, "You don't have permissions to do that."]
+                # Operation formatting
+                if operation.is_a?(::Hash)
+                    operation = ::Hash::gxg_import(operation)
+                    operation.search do |the_value, the_selector, the_container|
+                        if the_value.is_a?(::Hash)
+                            if the_value[:formats].is_a?(::Hash) && the_value[:records].is_a?(::Array)
+                                imported_list = ::GxG::Database::Database::detached_package_import(the_value)
+                                if imported_list.size > 1
+                                    the_container[(the_selector)] = imported_list
+                                else
+                                    the_container[(the_selector)] = imported_list[0]
+                                end
+                            end
+                        end
+                    end
+                end
+                #
+                if operation
+                    case operation.keys[0].to_sym
+                    when :upgrade_credential
+                        new_credential = ::GxG::DB[:authority].user_credential(operation[:upgrade_credential][:username].to_s, operation[:upgrade_credential][:password].to_s)
+                        if new_credential
+                            response = [200, {"content-type" => "application/text"}, {:result => ::GxGwww::api_login(the_session['session_id'], new_credential), :error => nil}.gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
+                        else
+                            response = [403, {"content-type" => "application/text"}, {:result => nil, :error => "Bad username or password."}.gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
+                        end
+                    when :downgrade_credential
+                        response = [200, {"content-type" => "application/text"}, {:result => ::GxGwww::api_logout(the_session['session_id']), :error => nil}.gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
+                    when :interface
+                        response = [200, {"content-type" => "application/text"}, @service.interface(credential).gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
+                    else
+                        begin
+                            call_response = @service.call_event(operation, , credential)
+                            if call_response.is_a?(::Hash)
+                                call_response.search do |the_value, the_selector, the_container|
+                                    if the_value.is_any?(::GxG::Database::PersistedHash, ::GxG::Database::DetachedHash)
+                                        the_container[(the_selector)] = the_value.export_package()
+                                    end
+                                end
+                            end
+                            response = [200, {"content-type" => "application/text"}, call_response.gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
+                        rescue Exception => the_error
+                            response = [500, {"content-type" => "application/text"}, the_error.to_s]
+                        end
+                    end
+                    # the_manifest = GxG::SERVICES[:www][:manifests][(the_session['session_id'])]
+                end
+            end
+            #
+            response
+            # API ????
+            # @service.call_event(operation_envelope=nil, credential)
+            # GxG::SERVICES[:www][:manifests][(the_session['session_id'])]
+            # unless the_manifest
+            #     the_manifest = ::GxGwww::Manifest.new({:credential => :'00000000-0000-4000-0000-000000000000'})
+            #     # manifest format: {:credential => :'00000000-0000-4000-0000-000000000000', :displays => {}, :timers => {}, :connectors => {}, :status => :none}
+            #     GxG::SERVICES[:www][:manifests][(the_session['session_id'])] = the_manifest
+            # end
+            # operations = []
+            # case the_method
+            # when :get
+            #     if the_request.params["details"].to_s.size > 0
+            #         operations = (::JSON::parse(URI.unescape(URI.unescape(the_request.params["details"].to_s.decode64)), {:symbolize_names => true}))
+            #     end
+            # when :put
+            #     if the_request.body.respond_to?(:rewind) && the_request.body.respond_to?(:read)
+            #          the_request.body.rewind
+            #          operations = (::JSON::parse(URI.unescape(URI.unescape(the_request.body.read())), {:symbolize_names => true}))
+            #     else
+            #         log_warn("Abnormal PUT Body #{the_request.body.inspect}")
+            #     end
+            # end
+        end
+    end
+    # ### Application Support
     module Applications
         MENU = []
         def self.refresh_application_menu()
@@ -956,30 +1143,47 @@ module GxGwww
                    # puts "Got Request Path: #{request_path}"
                    # ????
                    case the_method
-                   when :get
-                       if ["", "/", "/index"].include?(request_path) || ::GxG::SERVICES[:core][:resources].exist?("/Public/www/content/pages#{request_path}")
-                           # Send bootstrap html page and wait for xhr requests
-                           # content = GxGwww::CACHE.fetch("/page.html",the_session[:credential])
-                           response[0] = 200
-                           # response[1]["content-type"] = content[:content_type]
-                           response[1]["content-type"] = "text/html"
-                           # response[2] = content[:data]
-                           response[2] = self.default_page_content()
-                       else
-                           # Asset :get request
-                           if ::GxG::SERVICES[:core][:resources].exist?(("/Public/www" << request_path))
-                            content = GxGwww::CACHE.fetch(("/Public/www" << request_path), (the_session[:credential] || :"00000000-0000-4000-0000-000000000000"), true)
-                            if content
-                                response[0] = 200
-                                response[1]["content-type"] = content[:content_type]
-                                response[1]["X-Content-Type-Options"] = "nosniff"
-                                response[2] = content[:data]
+                   when :get, :put
+                       if request_path.to_s.downcase[(0..3)].include?("/api")
+                            # Filter for API controller match
+                            the_controller = nil
+                            ::GxGwww::API_THREAD_SAFETY.synchronize {
+                                ::GxGwww::API.each_pair do |the_path, the_handler|
+                                    if request_path.to_s[(4..-1)] == the_path.to_s
+                                        the_controller = the_handler
+                                        break
+                                    end
+                                end
+                            }
+                            if the_controller
+                                response = the_controller.process(the_method, the_request, the_session)
                             else
-                                 log_warn "Failed to fetch: #{request_path}"
+                                response = [404, {"content-type" => "application/text"}, "Endpoint Not Found"]
                             end
-                           end
+                       else
+                            if ["", "/", "/index"].include?(request_path) || ::GxG::SERVICES[:core][:resources].exist?("/Public/www/content/pages#{request_path}")
+                                # Send bootstrap html page and wait for xhr requests
+                                # content = GxGwww::CACHE.fetch("/page.html",the_session[:credential])
+                                response[0] = 200
+                                # response[1]["content-type"] = content[:content_type]
+                                response[1]["content-type"] = "text/html"
+                                # response[2] = content[:data]
+                                response[2] = self.default_page_content()
+                            else
+                                # Asset :get request
+                                if ::GxG::SERVICES[:core][:resources].exist?(("/Public/www" << request_path))
+                                 content = GxGwww::CACHE.fetch(("/Public/www" << request_path), (the_session[:credential] || :"00000000-0000-4000-0000-000000000000"), true)
+                                    if content
+                                        response[0] = 200
+                                        response[1]["content-type"] = content[:content_type]
+                                        response[1]["X-Content-Type-Options"] = "nosniff"
+                                        response[2] = content[:data]
+                                    else
+                                        log_warn "Failed to fetch: #{request_path}"
+                                    end
+                                end
+                            end
                        end
-                   when :put
                    when :post
                         #                       if the_request.path.include?("/display/")
                         #                           if the_request.params["operation"] == "close"

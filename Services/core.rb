@@ -389,6 +389,17 @@ module GxG
       def fs_root()
         ::File.expand_path("#{::GxG::SYSTEM.gxg_root()}/#{self.vfs_root()}")
       end
+      # ### API Support
+      def publish_api()
+        if ::GxG::Services::service_available?(:www)
+          ::GxG::SERVICES[:www].call_event({:publish_api => {:service => self, :path => "/#{@provides.to_s}"}}, ::GxG::DB[:administrator])
+        end
+      end
+      def unpublish_api()
+        if ::GxG::Services::service_available?(:www)
+          ::GxG::SERVICES[:www].call_event({:unpublish_api => {:path => "/#{@provides.to_s}"}}, ::GxG::DB[:administrator])
+        end
+      end
       # ### Service Management
       def provides()
         @provides

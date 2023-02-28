@@ -1079,18 +1079,22 @@ exchange_service.require_service(:accounting)
 # ### Define Public Command Interface:
 exchange_service.on(:start, {:description => "Exchange Service Start", :usage => "{ :start => nil }"}) do
   ::GxG::SERVICES[:exchange].start
+  ::GxG::SERVICES[:exchange].publish_api
 end
 exchange_service.on(:stop, {:description => "Exchange Service Stop", :usage => "{ :stop => nil }"}) do
   ::GxG::SERVICES[:exchange].stop
+  ::GxG::SERVICES[:exchange].unpublish_api
 end
 exchange_service.on(:restart, {:description => "Exchange Service Restart", :usage => "{ :restart => nil }"}) do
   ::GxG::SERVICES[:exchange].restart
 end
 exchange_service.on(:pause, {:description => "Exchange Service Pause", :usage => "{ :pause => nil }"}) do
   ::GxG::SERVICES[:exchange].pause
+  ::GxG::SERVICES[:exchange].unpublish_api
 end
 exchange_service.on(:resume, {:description => "Exchange Service Resume", :usage => "{ :resume => nil }"}) do
   ::GxG::SERVICES[:exchange].resume
+  ::GxG::SERVICES[:exchange].publish_api
 end
 # ### Define Internal Service Control Events:
 exchange_service.on(:at_start, {:description => "Exchange Startup", :usage => "{ :at_start => (service-object) }"}) do |service|

@@ -289,6 +289,18 @@ www_service.on(:at_stop, {:description => "WWW Stop", :usage => "{ :at_stop => (
     #
     {:result => true}
 end
+www_service.on(:publish_api, {:description => "Publish Service API", :usage => "{ :publish_api => {:service => (service-object), :path => '/path'} }", :public => false}) do |data, credential|
+    #
+    ::GxGwww::publish_api(data[:service], data[:path])
+    #
+    {:result => true}
+end
+www_service.on(:unpublish_api, {:description => "Unpublish Service API", :usage => "{ :unpublish_api => {:path => '/path'} }", :public => false}) do |data, credential|
+    #
+    ::GxGwww::unpublish_api(data[:path])
+    #
+    {:result => true}
+end
 # ### Service Installation
 unless ::GxG::Services::service_available?(:www)
     # Set Configuration Defaults
