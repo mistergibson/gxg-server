@@ -237,7 +237,8 @@ module GxG
     def self.start_service(moniker=nil)
       if moniker.is_a?(::Symbol)
         if ::GxG::SERVICES[(moniker)]
-          ::GxG::SERVICES[(moniker)].start
+          # ::GxG::SERVICES[(moniker)].start
+          ::GxG::SERVICES[(moniker)].call_event({:start => nil})
         end
       end
     end
@@ -245,7 +246,8 @@ module GxG
     def self.stop_service(moniker=nil)
       if moniker.is_a?(::Symbol)
         if ::GxG::SERVICES[(moniker)]
-          ::GxG::SERVICES[(moniker)].stop
+          # ::GxG::SERVICES[(moniker)].stop
+          ::GxG::SERVICES[(moniker)].call_event({:stop => nil})
         end
       end
     end
