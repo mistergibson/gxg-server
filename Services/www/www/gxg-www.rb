@@ -161,7 +161,7 @@ module GxGwww
                         response = [200, {"content-type" => "application/text"}, @service.interface(credential).gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
                     else
                         begin
-                            call_response = @service.call_event(operation, , credential)
+                            call_response = @service.call_event(operation, credential)
                             if call_response.is_a?(::Hash)
                                 call_response.search do |the_value, the_selector, the_container|
                                     if the_value.is_any?(::GxG::Database::PersistedHash, ::GxG::Database::DetachedHash)
