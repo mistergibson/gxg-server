@@ -158,7 +158,7 @@ module GxGwww
                     when :downgrade_credential
                         response = [200, {"content-type" => "application/text"}, {:result => ::GxGwww::api_logout(the_session['session_id']), :error => nil}.gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
                     when :interface
-                        response = [200, {"content-type" => "application/text"}, @service.interface(credential).gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
+                        response = [200, {"content-type" => "application/text"}, {:result => @service.interface(credential)}.gxg_export.to_json.encrypt(the_session["csrf"]).encode64]
                     else
                         begin
                             call_response = @service.call_event(operation, credential)
