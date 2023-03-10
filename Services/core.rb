@@ -1333,6 +1333,10 @@ module GxG
       # ###
       #
     end
+    # ### Installer Support
+    class SoftwareInstaller
+      #
+    end
     #
   end
 end
@@ -1391,7 +1395,11 @@ core_service.on(:at_start, {:description => "System Service Layer Startup", :usa
   # ### Startup Scripts
   Dir.entries("#{::GxG::SYSTEM_PATHS[:system]}/Startup").each do |entry|
     if File.extname(entry) == ".rb"
-      require "#{::GxG::SYSTEM_PATHS[:system]}/Startup/#{entry}"
+      begin
+        require "#{::GxG::SYSTEM_PATHS[:system]}/Startup/#{entry}"
+      rescue Exception => the_error
+        log_error({:error => the_error})
+      end
     end
   end
   #
