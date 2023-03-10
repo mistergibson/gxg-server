@@ -23,6 +23,7 @@ end
     end
   end
 end
+puts "Paths: #{::GxG::SYSTEM_PATHS.inspect}"
 # ### Mount Databases by role
 if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
     handle = File.open("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json", "rb")
