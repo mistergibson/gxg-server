@@ -41,9 +41,9 @@ module GxG
       Dir.mkdir(services_dir, 0775)
   end
   #
-  app_dir = File.expand_path("./Applications",gxg_root)
-  unless Dir.exist?(app_dir)
-      Dir.mkdir(app_dir, 0775)
+  installer_dir = File.expand_path("./Installers",gxg_root)
+  unless Dir.exist?(installer_dir)
+      Dir.mkdir(installer_dir, 0775)
   end
   # ### Review : allow a configurable /Users mount point for VFS (mass storage??)
   # users_dir = File.expand_path("./Users",gxg_root)
@@ -85,7 +85,7 @@ module GxG
   end
   tmp_dir = "#{system_dir}/Temporary"
   log_dir = "#{system_dir}/Logs"
-  SERVER_PATHS = {:root => gxg_root, :system => system_dir, :services => services_dir, :temporary => tmp_dir, :logs => log_dir, :applications => app_dir, :public => public_dir,  :configuration => sys_config_dir, :themes => pub_theme_dir, :javascript => pub_js_dir, :images => pub_image_dir, :audio => pub_audio_dir, :video => pub_video_dir, :databases => sys_db_dir, :extensions => sys_ext_dir, :gems => sys_gem_dir, :libraries => sys_lib_dir, :users => user_dir}
+  SERVER_PATHS = {:root => gxg_root, :system => system_dir, :services => services_dir, :temporary => tmp_dir, :logs => log_dir, :installers => installer_dir, :public => public_dir,  :configuration => sys_config_dir, :themes => pub_theme_dir, :javascript => pub_js_dir, :images => pub_image_dir, :audio => pub_audio_dir, :video => pub_video_dir, :databases => sys_db_dir, :extensions => sys_ext_dir, :gems => sys_gem_dir, :libraries => sys_lib_dir, :users => user_dir}
 end
 # Core Configuration
 unless File.exists?("#{GxG::SERVER_PATHS[:configuration]}/core.json")
