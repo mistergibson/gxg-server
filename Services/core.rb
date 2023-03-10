@@ -23,7 +23,6 @@ end
     end
   end
 end
-puts "Paths: #{::GxG::SYSTEM_PATHS.inspect}"
 # ### Mount Databases by role
 if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
     handle = File.open("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json", "rb")
@@ -144,7 +143,7 @@ end
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:system]}), "/System")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:services]}), "/Services")
 # User-Agent code goes in '/Applications'. Rename to '/Agents' ??
-::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:applications]}), "/Applications")
+::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:installers]}), "/Installers")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:temporary]}), "/Temporary")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:logs]}), "/Logs")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:public]}), "/Public")
