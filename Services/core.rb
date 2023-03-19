@@ -142,7 +142,6 @@ end
 # ### Populate the Mandatory VFS with GxG::SYSTEM_PATHS
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:system]}), "/System")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:services]}), "/Services")
-# User-Agent code goes in '/Applications'. Rename to '/Agents' ??
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:installers]}), "/Installers")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:temporary]}), "/Temporary")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:logs]}), "/Logs")
@@ -1335,6 +1334,346 @@ module GxG
     end
     # ### Installer Support
     class SoftwareInstaller
+      # ::GxG::SYSTEM_PATHS[:installers]
+      # GxG::VFS.get_permissions("/Installers")
+      # [{:credential=>:"4f1d2779-ed9f-4570-9f0b-75c26be165ef", :permissions=>{:execute=>true, :rename=>true, :move=>true, :destroy=>true, :create=>true, :write=>true, :read=>true}, :details=>{:role_title=>"Administrators"}}, {:credential=>:"00000000-0000-4000-0000-000000000000", :permissions=>{:execute=>true, :rename=>false, :move=>false, :destroy=>false, :create=>false, :write=>false, :read=>true}, :details=>{:user_title=>"public"}}]
+      # ::GxG::VFS.set_permissions(subpath="", the_credential=nil, the_permissions={})
+      # ::GxG::Storage::Volume.new({:database => the_db, :credential => GxG::DB[:administrator]})
+      # the_db_url = "sqlite://#{GxG::SYSTEM_PATHS[:databases]}/#{::URI::parse(entry[:url]).hostname}"
+      # the_db = ::GxG::Database::connect(the_db_url)
+      # ::GxG::VFS.mount(::GxG::Storage::Volume.new({:database => the_db, :credential => GxG::DB[:administrator]}), "/Installers")
+      # ::GxG::SERVICES[:core][:resources].exist?()
+      # {:token => the_token, :path => the_path, :resource => the_resource}
+      def initialize(archive_name=nil)
+        #
+        unless archive_name.is_a?(::String)
+          raise "You MUST provide a valid installer archive name as a String."
+        end
+        unless ::GxG::SERVICES[:core][:resources].exist?("/Installers/#{archive_name}")
+          raise "Archive #{archive_name} does not exist."
+        end
+        if ::GxG::SERVICES[:core][:resources].busy?("/Installers/#{archive_name}")
+          raise "Archive #{archive_name} is in use currently."
+        end
+        #
+        @manifest = nil
+        @database = nil
+        @archive_token = ::GxG::SERVICES[:core][:resources].open("/Installers/#{archive_name}", GxG::DB[:administrator])
+        if @archive_token
+          @database = ::GxG::Database::connect(::URI.parse("sqlite://#{::GxG::SYSTEM_PATHS[:installers]}/#{archive_name}"), {:read_only => true})
+          unless @database.is_a?(::GxG::Database::Database)
+            ::GxG::SERVICES[:core][:resources].close(@archive_token[:token])
+            raise "Unable to open #{archive_name}"
+          end
+          @installer_path = "/Installers/#{::GxG::uuid_generate()}"
+          @manifest = ::JSON::parse(@database[:installation_manifest].to_s.decode64, {:symbolize_names => true})
+          ::GxG::VFS.mount(::GxG::Storage::Volume.new({:database => @database, :credential => GxG::DB[:administrator]}), @installer_path)
+        else
+          raise "Unable to secure a read-access token for: #{archive_name}"
+        end
+        #
+        self
+      end
+      #
+      def open?()
+        if @database.is_a?(::GxG::Database::Database)
+          true
+        else
+          false
+        end
+      end
+      #
+      def close()
+        if @archive_token.is_a?(::Hash)
+          ::GxG::SERVICES[:core][:resources].close(@archive_token[:token])
+          ::GxG::VFS.unmount(@installer_path)
+          @archive_token = nil
+          if @database.is_a?(::GxG::Database::Database)
+            @database.close
+            @database = nil
+          end
+        end
+        true
+      end
+      #
+      def perform_install(options={})
+        begin
+          if self.open?() && @manifest.is_a?(::Hash)
+            # flesh out manifest
+            # manifest format: {:package => "", :version => "0.0", :formats => {}, objects => {:"path/to/file" => [{:users => {:read => true}}]}}
+            # copy formats
+            ::GxG::DB[:roles][:formats].sync_import(GxG::DB[:administrator], {:formats => (@manifest[:formats] || {}), :records => []})
+            # copy files into place, setting permissions          
+            if @manifest[:objects].is_a?(::Hash)
+              @manifest[:objects].each_pair do |the_path, the_permissions|
+                ::GxG::SERVICES[:core][:resources].copy("#{@installer_path}#{the_path.to_s}", GxG::DB[:administrator], the_path.to_s)
+                if the_permissions.is_a?(::Array)
+                  ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, :"00000000-0000-4000-0000-000000000000", {:write => false, :read => false})
+                  ::GxG::SERVICES[:core][:resources].revoke_permissions(the_path.to_s, :"00000000-0000-4000-0000-000000000000")
+                  #
+                  the_permissions.each do |the_entry|
+                    if the_entry.is_a?(::Hash)
+                      #
+                      the_credential = nil
+                      case the_entry.keys[0]
+                      when :public
+                        the_credential = :"00000000-0000-4000-0000-000000000000"
+                      when :users
+                        the_credential = ::GxG::DB[:users]
+                      when :designers
+                        the_credential = ::GxG::DB[:designers]
+                      when :developers
+                        the_credential = ::GxG::DB[:developers]
+                      when :administrators
+                        the_credential = ::GxG::DB[:administrators]
+                      end
+                      if the_credential
+                        ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, the_credential, (the_entry.values[0] || {:read => true}))
+                      end
+                      #
+                    end
+                  end
+                  #
+                end
+              end
+            end
+            result = true
+          else
+            result = false
+          end
+        rescue Exception => the_error
+          log_error({:error => the_error})
+          result = false
+        end
+        result
+      end
+      #
+    end
+    #
+    class SoftwareInstallerMaker
+      private
+      #
+      def portable_format(the_format_record=nil)
+        result = nil
+        if the_format_record.is_any?(::Hash, ::GxG::Database::DetachedHash, ::GxG::Database::PersistedHash)
+          if the_format_record.is_any?(::GxG::Database::DetachedHash, ::GxG::Database::PersistedHash)
+            the_format_record = the_format_record.unpersist
+          end
+          if (the_format_record[:uuid] && the_format_record[:type] && the_format_record[:ufs] && the_format_record[:version] && the_format_record[:mime_types])
+            #
+            result = {:uuid => (the_format_record[:uuid]), :type => (the_format_record[:type]), :ufs => (the_format_record[:ufs]), :title => (the_format_record[:title].to_s), :version => (the_format_record[:version]), :mime_types => (the_format_record[:mime_types] || []), :content => the_format_record[:content].gxg_export}
+            #
+          else
+            raise "Malformed format record"
+          end
+        else
+          raise "Malformed format record"
+        end
+        result
+      end
+      #
+      def portable_permission(credential=nil, permissions=nil)
+        result = nil
+        if ::GxG::valid_uuid?(credential) && permissions.is_a?(::Hash)
+          if credential == :"00000000-0000-4000-0000-000000000000"
+            the_role = :public
+          else
+            the_role = nil
+            [:administrators, :developers, :designers, :users].each do |entry|
+              if credential == ::GxG::DB[(entry)]
+                the_role = entry
+                break
+              end
+            end
+          end
+          if the_role
+            result = {}
+            result[(the_role)] = permissions
+          end
+        end
+        result
+      end
+      #
+      public
+      # manifest format: {:package => "", :version => "0.0", :formats => {}, :objects => {:"path/to/file" => [{:users => {:read => true}}]}}
+      # @manifest = ::JSON::parse(@database[:installation_manifest].to_s.decode64, {:symbolize_names => true})
+      def initialize()
+        @manifest = {:package => nil, :version => "0.0", :formats => {}, :objects => {}}
+        self
+      end
+      #
+      def package()
+        @manifest[:package]
+      end
+      #
+      def package=(package_name=nil)
+        if package_name
+          @manifest[:package] = package_name.to_s[0..127]
+        end
+      end
+      #
+      def version()
+        ::BigDecimal(@manifest[:version])
+      end
+      #
+      def version=(the_version=nil)
+        if the_version.is_any?(::String, ::BigDecimal)
+          @manifest[:version] = the_version.to_s
+        else
+          raise "You MUST provide a String or BigDecimal as version number"
+        end
+        #
+        def add_format_from_uuid(the_uuid=nil)
+          the_format_record = ::GxG::DB[:roles][:formats].format_load({:uuid => the_uuid})
+          unless the_format_record
+            the_format_record = ::GxG::DB[:formats][(the_uuid.to_s.to_sym)]
+          end
+          if the_format_record.is_a?(::Hash)
+            portable_record = portable_format(the_format_record)
+            if portable_record
+              @manifest[:formats][(the_format_record[:uuid].to_s.to_sym)] = portable_record
+              true
+            else
+              false
+            end
+          else
+            false
+          end
+        end
+        #
+        def add_format_from_ufs(the_ufs=nil)
+          the_format_record = ::GxG::DB[:roles][:formats].format_load({:ufs => the_ufs})
+          unless the_format_record
+            ::GxG::DB[:formats].values.each do |entry|
+              if entry[:ufs] == the_ufs
+                the_format_record = entry
+                break
+              end
+            end
+          end
+          if the_format_record.is_a?(::Hash)
+            portable_record = portable_format(the_format_record)
+            if portable_record
+              @manifest[:formats][(the_format_record[:uuid].to_s.to_sym)] = portable_record
+              true
+            else
+              false
+            end
+          else
+            false
+          end
+        end
+        #
+        def add_format_from_record(the_format_record=nil)
+          if (the_format_record[:uuid] && the_format_record[:type] && the_format_record[:ufs] && the_format_record[:version] && the_format_record[:mime_types])
+            portable_record = portable_format(the_format_record)
+            if portable_record
+              @manifest[:formats][(the_format_record[:uuid].to_s.to_sym)] = portable_record
+              true
+            else
+              false
+            end
+          else
+            raise "Malformed format record"
+          end
+        end
+        #
+        def add_path(the_path=nil)
+          if the_path.is_a?(::String)
+            the_profile = ::GxG::SERVICES[:core][:resources].profile(the_path, ::GxG::DB[:administrator])
+            #
+            if [:virtual_directory, :directory, :persisted_array].include?(the_profile[:type])
+              processing_db = [(the_path)]
+              while processing_db.size > 0
+                item = processing_db.shift
+                if item
+                  #
+                  @manifest[:objects][(item.to_s.to_sym)] = []
+                  ::GxG::VFS.get_permissions(item).each do |entry|
+                    the_permission = portable_permission(entry[:credential], entry[:permissions])
+                    if the_permission
+                      @manifest[:objects][(item.to_s.to_sym)] << the_permission
+                    end
+                  end
+                  #
+                  subitems = ::GxG::SERVICES[:core][:resources].entries(item, ::GxG::DB[:administrator])
+                  if subitems.size > 0
+                    subitems.each do |profile|
+                      subpath = (item + "/" + profile[:title])
+                      if [:virtual_directory, :directory, :persisted_array].include?(profile[:type])
+                        processing_db << subpath
+                      else
+                        @manifest[:objects][(subpath.to_s.to_sym)] = []
+                        ::GxG::VFS.get_permissions(subpath).each do |entry|
+                          the_permission = portable_permission(entry[:credential], entry[:permissions])
+                          if the_permission
+                            @manifest[:objects][(subpath.to_s.to_sym)] << the_permission
+                          end
+                        end
+                      end
+                    end
+                  end
+                  #
+                end
+              end
+            else
+              @manifest[:objects][(the_path.to_s.to_sym)] = []
+              ::GxG::VFS.get_permissions(the_path).each do |entry|
+                the_permission = portable_permission(entry[:credential], entry[:permissions])
+                if the_permission
+                  @manifest[:objects][(the_path.to_s.to_sym)] << the_permission
+                end
+              end
+            end
+            #
+            true
+          else
+            raise "Malformed path String"
+          end
+        end
+        #
+        def make_installer()
+          result = false
+          #
+          if @manifest[:package]
+            archive_name = (@manifest[:package].to_s.gsub(" ","-") + "_" + @manifest[:version].to_s.gsub(".","-") + ".gxg_installer")
+            installer_path = "/Installers/#{::GxG::uuid_generate()}"
+            database = ::GxG::Database::connect(::URI.parse("sqlite://#{::GxG::SYSTEM_PATHS[:installers]}/#{archive_name}"))
+            unless database.is_a?(::GxG::Database::Database)
+              raise "Unable to open #{archive_name}"
+            end
+            ::GxG::VFS.mount(::GxG::Storage::Volume.new({:database => database, :credential => GxG::DB[:administrator]}), installer_path)
+            begin
+              database[:installation_manifest] = @manifest.to_json.encode64
+              @manifest[:objects].keys.each do |the_path|
+                ::GxG::SERVICES[:core][:resources].copy(the_path.to_s, GxG::DB[:administrator], "#{installer_path}#{the_path.to_s}")
+                ::GxG::SERVICES[:core][:resources].set_permissions("#{installer_path}#{the_path.to_s}", :"00000000-0000-4000-0000-000000000000", {:read => true})
+              end
+              @manifest[:objects].keys.each do |the_path|
+                ::GxG::SERVICES[:core][:resources].revoke_permissions("#{installer_path}#{the_path.to_s}", ::GxG::DB[:users])
+                ::GxG::SERVICES[:core][:resources].revoke_permissions("#{installer_path}#{the_path.to_s}", ::GxG::DB[:designers])
+                ::GxG::SERVICES[:core][:resources].revoke_permissions("#{installer_path}#{the_path.to_s}", ::GxG::DB[:developers])
+                ::GxG::SERVICES[:core][:resources].revoke_permissions("#{installer_path}#{the_path.to_s}", ::GxG::DB[:administrators])
+              end
+              #
+              ::GxG::VFS.unmount(installer_path)
+              database.close
+              result = true
+            rescue Exception => the_error
+              ::GxG::VFS.unmount(installer_path)
+              database.close
+              ::GxG::SERVICES[:core][:resources].destroy(("/Installers/#{archive_name}"), ::GxG::DB[:administrator])
+              log_error({:error => the_error})
+              raise the_error
+            end
+          else
+            raise "You MUST first set the package name"
+          end
+          #
+          result
+        end
+        #
+      end
       #
     end
     #
