@@ -1082,6 +1082,14 @@ module GxG
         result
       end
       #
+      def mark_busy(the_path="")
+        the_token = ::GxG::uuid_generate.to_sym
+        @thread_safety_write.synchronize {
+          @write_locks[(the_token)] = {:path => the_path, :resource => true}
+        }
+        {:token => the_token, :path => the_path, :resource => true}
+      end
+      #
       def reopen_writable(the_token="", credential=:"00000000-0000-4000-0000-000000000000", flags=[])
         result = nil
         if ::GxG::valid_uuid?(the_token)
@@ -1334,16 +1342,7 @@ module GxG
     end
     # ### Installer Support
     class SoftwareInstaller
-      # ::GxG::SYSTEM_PATHS[:installers]
-      # GxG::VFS.get_permissions("/Installers")
-      # [{:credential=>:"4f1d2779-ed9f-4570-9f0b-75c26be165ef", :permissions=>{:execute=>true, :rename=>true, :move=>true, :destroy=>true, :create=>true, :write=>true, :read=>true}, :details=>{:role_title=>"Administrators"}}, {:credential=>:"00000000-0000-4000-0000-000000000000", :permissions=>{:execute=>true, :rename=>false, :move=>false, :destroy=>false, :create=>false, :write=>false, :read=>true}, :details=>{:user_title=>"public"}}]
-      # ::GxG::VFS.set_permissions(subpath="", the_credential=nil, the_permissions={})
-      # ::GxG::Storage::Volume.new({:database => the_db, :credential => GxG::DB[:administrator]})
-      # the_db_url = "sqlite://#{GxG::SYSTEM_PATHS[:databases]}/#{::URI::parse(entry[:url]).hostname}"
-      # the_db = ::GxG::Database::connect(the_db_url)
-      # ::GxG::VFS.mount(::GxG::Storage::Volume.new({:database => the_db, :credential => GxG::DB[:administrator]}), "/Installers")
-      # ::GxG::SERVICES[:core][:resources].exist?()
-      # {:token => the_token, :path => the_path, :resource => the_resource}
+      #
       def initialize(archive_name=nil)
         #
         unless archive_name.is_a?(::String)
@@ -1406,6 +1405,11 @@ module GxG
             # copy files into place, setting permissions          
             if @manifest[:objects].is_a?(::Hash)
               @manifest[:objects].each_pair do |the_path, the_permissions|
+                if ::GxG::SERVICES[:core][:resources].exist?(the_path.to_s)
+                  existing_permissions = ::GxG::VFS.get_permissions(the_path.to_s)
+                else
+                  existing_permissions = nil
+                end
                 ::GxG::SERVICES[:core][:resources].copy("#{@installer_path}#{the_path.to_s}", GxG::DB[:administrator], the_path.to_s)
                 if the_permissions.is_a?(::Array)
                   ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, :"00000000-0000-4000-0000-000000000000", {:write => false, :read => false})
@@ -1431,6 +1435,12 @@ module GxG
                         ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, the_credential, (the_entry.values[0] || {:read => true}))
                       end
                       #
+                    end
+                  end
+                  #
+                  if existing_permissions.is_a?(::Array)
+                    existing_permissions.each do |entry|
+                      ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, entry[:credential] entry[:permissions])
                     end
                   end
                   #
@@ -1495,8 +1505,7 @@ module GxG
       end
       #
       public
-      # manifest format: {:package => "", :version => "0.0", :formats => {}, :objects => {:"path/to/file" => [{:users => {:read => true}}]}}
-      # @manifest = ::JSON::parse(@database[:installation_manifest].to_s.decode64, {:symbolize_names => true})
+      #
       def initialize()
         @manifest = {:package => nil, :version => "0.0", :formats => {}, :objects => {}}
         self
@@ -1587,16 +1596,18 @@ module GxG
               while processing_db.size > 0
                 item = processing_db.shift
                 if item
+                  subitems = ::GxG::SERVICES[:core][:resources].entries(item, ::GxG::DB[:administrator])
                   #
-                  @manifest[:objects][(item.to_s.to_sym)] = []
-                  ::GxG::VFS.get_permissions(item).each do |entry|
-                    the_permission = portable_permission(entry[:credential], entry[:permissions])
-                    if the_permission
-                      @manifest[:objects][(item.to_s.to_sym)] << the_permission
+                  if subitems.size == 0
+                    @manifest[:objects][(item.to_s.to_sym)] = []
+                    ::GxG::VFS.get_permissions(item).each do |entry|
+                      the_permission = portable_permission(entry[:credential], entry[:permissions])
+                      if the_permission
+                        @manifest[:objects][(item.to_s.to_sym)] << the_permission
+                      end
                     end
                   end
                   #
-                  subitems = ::GxG::SERVICES[:core][:resources].entries(item, ::GxG::DB[:administrator])
                   if subitems.size > 0
                     subitems.each do |profile|
                       subpath = (item + "/" + profile[:title])
@@ -1642,6 +1653,7 @@ module GxG
             unless database.is_a?(::GxG::Database::Database)
               raise "Unable to open #{archive_name}"
             end
+            archive_token = ::GxG::SERVICES[:core][:resources].mark_busy("/Installers/#{archive_name}")
             ::GxG::VFS.mount(::GxG::Storage::Volume.new({:database => database, :credential => GxG::DB[:administrator]}), installer_path)
             begin
               database[:installation_manifest] = @manifest.to_json.encode64
@@ -1658,10 +1670,12 @@ module GxG
               #
               ::GxG::VFS.unmount(installer_path)
               database.close
+              ::GxG::SERVICES[:core][:resources].close(archive_token[:token])
               result = true
             rescue Exception => the_error
               ::GxG::VFS.unmount(installer_path)
               database.close
+              ::GxG::SERVICES[:core][:resources].close(archive_token[:token])
               ::GxG::SERVICES[:core][:resources].destroy(("/Installers/#{archive_name}"), ::GxG::DB[:administrator])
               log_error({:error => the_error})
               raise the_error
