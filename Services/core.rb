@@ -5,6 +5,26 @@ if ARGV.include?("--quiet")
   STDERR.reopen("/dev/null", "w")
 end
 require 'rubygems'
+require 'rubygems/gem_runner'
+require 'rubygems/exceptions'
+#
+module Gem::UserInteraction
+	def terminate_interaction(exit_code = 0)
+		# Suppress the instruction to exit ruby:
+		# ui.terminate_interaction exit_code
+	  end
+end
+#
+class Object
+	private
+	def gem_command(commands=nil)
+		if commands.is_a?(::String)
+			Gem::GemRunner.new.run commands.split(" ")
+		end
+	end
+	public
+end
+#
 require 'gxg-framework'
 # ### Define Directory Layout for Server
 ::GxG::SYSTEM.gxg_root = File.expand_path("../",File.dirname(__FILE__))
@@ -22,6 +42,44 @@ end
       end
     end
   end
+end
+# Ensure specs dir is present
+if Dir.exist?(GxG::SYSTEM_PATHS[:gems])
+  unless Dir.exist?("#{GxG::SYSTEM_PATHS[:gems]}/specs")
+    begin
+      FileUtils.mkpath("#{GxG::SYSTEM_PATHS[:gems]}/specs")
+    rescue Exception => error
+      log_error({:error => error, :parameters => "#{GxG::SYSTEM_PATHS[:gems]}/specs"})
+    end
+  end
+else
+  begin
+    FileUtils.mkpath("#{GxG::SYSTEM_PATHS[:gems]}/specs")
+  rescue Exception => error
+    log_error({:error => error, :parameters => "#{GxG::SYSTEM_PATHS[:gems]}/specs"})
+  end
+end
+# Setup Rubygems paths
+ENV['GEM_HOME']=GxG::SYSTEM_PATHS[:gems]
+ENV['GEM_SPEC_CACHE']="#{GxG::SYSTEM_PATHS[:gems]}/specs"
+ENV['GEM_PATH']=[(GxG::SYSTEM_PATHS[:gems]), (Gem.paths.path)].flatten.join(":")
+Gem.clear_paths
+Gem.paths = ENV
+#
+class Object
+	private
+	def gem_install(gem_name=nil,version_info=nil)
+		if gem_name.is_any?(::String, ::Symbol) && version_info.is_any?(::String, ::NilClass)
+			if version_info
+        gem_command("install --install-dir #{GxG::SYSTEM_PATHS[:gems]} --version #{version_info.to_s} #{gem_name.to_s}")
+      else
+        gem_command("install --install-dir #{GxG::SYSTEM_PATHS[:gems]} #{gem_name.to_s}")
+      end
+		end
+  else
+    raise Exception, "Invalid gem or version specifier"
+	end
+	public
 end
 # ### Mount Databases by role
 if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
@@ -1366,6 +1424,9 @@ module GxG
           end
           @installer_path = "/Installers/#{::GxG::uuid_generate()}"
           @manifest = ::JSON::parse(@database[:installation_manifest].to_s.decode64, {:symbolize_names => true})
+          @manifest[:formats].each_pair do |format_uuid, format_record|
+            format_record[:content] = ::Hash::gxg_import(format_record[:content])
+          end
           ::GxG::VFS.mount(::GxG::Storage::Volume.new({:database => @database, :credential => GxG::DB[:administrator]}), @installer_path)
         else
           raise "Unable to secure a read-access token for: #{archive_name}"
@@ -1399,7 +1460,11 @@ module GxG
         begin
           if self.open?() && @manifest.is_a?(::Hash)
             # flesh out manifest
-            # manifest format: {:package => "", :version => "0.0", :formats => {}, objects => {:"path/to/file" => [{:users => {:read => true}}]}}
+            # manifest format: {:package => "", :version => "0.0", :gems => {}, :formats => {}, objects => {:"path/to/file" => [{:users => {:read => true}}]}}
+            # Install Gems
+            @manifest[:gems].each_pair do |gem_name, version_info|
+              gem_install(gem_name, version_info)
+            end
             # copy formats
             ::GxG::DB[:roles][:formats].sync_import(GxG::DB[:administrator], {:formats => (@manifest[:formats] || {}), :records => []})
             # copy files into place, setting permissions          
@@ -1507,7 +1572,7 @@ module GxG
       public
       #
       def initialize()
-        @manifest = {:package => nil, :version => "0.0", :formats => {}, :objects => {}}
+        @manifest = {:package => nil, :version => "0.0", :gems => {}, :formats => {}, :objects => {}}
         self
       end
       #
@@ -1530,6 +1595,15 @@ module GxG
           @manifest[:version] = the_version.to_s
         else
           raise "You MUST provide a String or BigDecimal as version number"
+        end
+        #
+        def add_gem(gem_name=nil, version_info=nil)
+          if gem_name.is_any?(::String, ::Symbol) && version_info.is_any?(::String, ::NilClass)
+            @manifest[:gems][gem_name.to_s.to_sym] = version_info
+            true
+          else
+            false
+          end
         end
         #
         def add_format_from_uuid(the_uuid=nil)
