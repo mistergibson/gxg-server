@@ -1,0 +1,24 @@
+[Unit]
+Description=GxG Data Server
+After=network.target
+
+[Service]
+Type=simple
+
+User=root
+
+WorkingDirectory=/srv/gxg-server
+
+#ExecStart=/srv/gxg-server/daemon start
+#ExecStop=/srv/gxg-server/daemon stop
+#ExecStart=/usr/bin/sudo -u www-data /usr/bin/env jruby /srv/gxg-server/Services/core.rb
+ExecStart=/usr/bin/sudo -u mistergibson /usr/bin/env jruby /srv/gxg-server/Services/core.rb
+
+PIDFile=/srv/gxg-server/System/Temporary/server.pid
+
+ExecStop=/srv/gxg-server/daemon stop
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
