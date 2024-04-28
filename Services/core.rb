@@ -75,9 +75,9 @@ class Object
       else
         gem_command("install --install-dir #{GxG::SYSTEM_PATHS[:gems]} #{gem_name.to_s}")
       end
-		end
-  else
-    raise Exception, "Invalid gem or version specifier"
+    else
+      raise Exception, "Invalid gem or version specifier"
+    end
 	end
 	public
 end

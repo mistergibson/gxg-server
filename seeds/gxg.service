@@ -9,7 +9,9 @@ User=root
 
 WorkingDirectory=/srv/gxg-server
 
-ExecStart=/srv/gxg-server/daemon start
+#ExecStart=/srv/gxg-server/daemon start
+#ExecStop=/srv/gxg-server/daemon stop
+ExecStart=/usr/bin/env jruby /srv/gxg-server/Services/core.rb
 ExecStop=/srv/gxg-server/daemon stop
 
 Restart=always
