@@ -17,6 +17,7 @@ if RUBY_ENGINE == "jruby"
   requirements.push({:requirement => "psych", :gem => "psych"})
   requirements.push({:requirement => "sinatra", :gem => "sinatra"})
   requirements.push({:requirement => "sinatra-contrib", :gem => "sinatra-contrib"})
+  requirements.push({:requirement => "webrick", :gem => "webrick"})
   requirements.push({:requirement => "webrocket", :gem => "webrocket"})
   # Installation
   requirements.each do |the_record|

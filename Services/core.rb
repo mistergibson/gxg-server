@@ -1505,7 +1505,7 @@ module GxG
                   #
                   if existing_permissions.is_a?(::Array)
                     existing_permissions.each do |entry|
-                      ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, entry[:credential] entry[:permissions])
+                      ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, entry[:credential], entry[:permissions])
                     end
                   end
                   #
@@ -1587,7 +1587,7 @@ module GxG
       end
       #
       def version()
-        ::BigDecimal(@manifest[:version])
+        ::BigDecimal.new(@manifest[:version])
       end
       #
       def version=(the_version=nil)
