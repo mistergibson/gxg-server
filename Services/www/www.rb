@@ -55,7 +55,7 @@ end
 # ### Sinatra Bootstrap
 class Node0 < Sinatra::Application
     enable :sessions
-    # use Rack::Session::Cookie, {:key => "rack.session", :expire_after => 318513600, :same_site => :strict, :secure => true}
+    #use Rack::Session::Cookie, {:key => "rack.session", :expire_after => 318513600, :same_site => :strict, :secure => true}
     #
     helpers Sinatra::Streaming
     register Sinatra::WebDAV
@@ -69,10 +69,10 @@ class Node0 < Sinatra::Application
         set :public_folder, ::GxG::SYSTEM_PATHS[:www_public]
         set :logging, true
         set :logger, ::GxG::LOG
-        secret = ::GxG::uuid_generate.to_s
+        secret = ::GxG::uuid_generate.to_s + ::GxG::uuid_generate.to_s
         set :session_secret, secret
-        use Rack::Session::Pool, {:expire_after => 318513600, :secure => false}
-        use Rack::Session::Cookie, {:key => 'rack.session', :path => '/', :expire_after => 318513600, :secret => secret, :secure => false}
+        use Rack::Session::Pool, {:expire_after => 318513600, :secure => true}
+        use Rack::Session::Cookie, {:key => 'rack.session', :path => '/', :expire_after => 318513600, :secret => secret, :secure => true}
     end
     # ### Extend Sinatra Verbs
     # DAV Class 1 Supports

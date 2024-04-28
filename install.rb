@@ -15,6 +15,7 @@ if RUBY_ENGINE == "jruby"
   requirements = []
   requirements.push({:requirement => "spoon", :gem => "spoon"})
   requirements.push({:requirement => "psych", :gem => "psych"})
+  requirements.push({:requirement => "rackup", :gem => "rackup"})
   requirements.push({:requirement => "sinatra", :gem => "sinatra"})
   requirements.push({:requirement => "sinatra-contrib", :gem => "sinatra-contrib"})
   requirements.push({:requirement => "webrick", :gem => "webrick"})

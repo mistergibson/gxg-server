@@ -264,7 +264,7 @@ module GxGwww
                                     end
                                     record[:application_icon] = icon
                                 else
-                                    cache_entry = GxGwww::CACHE.fetch("/themes/setup/icons/gxg_app.png",GxG::DB[:administrator])
+                                    cache_entry = ::GxGwww::CACHE.fetch("/themes/setup/icons/gxg_app.png",GxG::DB[:administrator])
                                     if cache_entry
                                         record[:application_icon_type]  = cache_entry[:content_type]
                                         record[:application_icon] = cache_entry[:data].to_s.encode64
