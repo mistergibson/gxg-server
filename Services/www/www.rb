@@ -57,6 +57,11 @@ www_paths.each_pair do |moniker, path|
 end
 # ### Sinatra Bootstrap
 class Node0 < Sinatra::Application
+    def self.publish_route(the_method, path, options={}, &block)
+        route(the_method.to_s.upcase, path, options) do
+            block.call(the_method,request,session)
+        end
+    end
     enable :sessions
     #use Rack::Session::Cookie, {:key => "rack.session", :expire_after => 318513600, :same_site => :strict, :secure => true}
     #
