@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env jruby
 #
 # ### Standard Ruby is fine for small installations and development.
 # ### JRuby is best for scaled production as it uses *real* threads for each request.
@@ -40,10 +40,13 @@ www_paths[:www_javascript] = "#{www_paths[:www_public]}/javascript"
 www_paths[:www_images] = "#{www_paths[:www_public]}/images"
 www_paths[:www_audio] = "#{www_paths[:www_public]}/audio"
 www_paths[:www_video] = "#{www_paths[:www_public]}/video"
+# TODO: work out how to publish files to the public (cdn-style) no matter the internal origin.
+www_paths[:www_files] = "#{www_paths[:www_public]}/files"
 www_paths.values.each do |a_path|
   unless Dir.exist?(a_path)
     begin
-      FileUtils.mkpath(a_path, 0755)
+        # FileUtils.mkpath(a_path, 0755)
+        FileUtils.mkpath(a_path)
     rescue Exception => error
       log_error({:error => error, :parameters => a_path})
     end
@@ -69,7 +72,7 @@ class Node0 < Sinatra::Application
         set :public_folder, ::GxG::SYSTEM_PATHS[:www_public]
         set :logging, true
         set :logger, ::GxG::LOG
-        secret = ::GxG::uuid_generate.to_s + ::GxG::uuid_generate.to_s
+        secret = (::GxG::uuid_generate.to_s + "-" + ::GxG::uuid_generate.to_s)
         set :session_secret, secret
         use Rack::Session::Pool, {:expire_after => 318513600, :secure => true}
         use Rack::Session::Cookie, {:key => 'rack.session', :path => '/', :expire_after => 318513600, :secret => secret, :secure => true}
