@@ -26,6 +26,11 @@ if RUBY_ENGINE == "jruby"
       system("sudo jgem install #{the_record[:gem]}")
     end
   end
+  system("sudo cp #{(::File.dirname(__FILE__) << '/seeds/gxg.service')} /etc/systemd/system/gxg.service")
+  system("sudo systemctl daemon-reload")
+  system("sudo systemctl enable gxg")
+  system("sudo systemctl daemon-reload")
+  puts "Now type ./setup.rb to complete the installation."
 else
   # no-op
 end
