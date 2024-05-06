@@ -297,6 +297,14 @@ www_service.on(:at_stop, {:description => "WWW Stop", :usage => "{ :at_stop => (
     #
     {:result => true}
 end
+www_service.on(:publish_route, {:description => "Publish Route", :usage => "{ :publish_route => {:http_method => :get, :path => '/path', :options => {}, :code => proc}}", :public => false}) do |data, credential|
+    # Code Usage:
+    # ::GxG::SERVICES[:core].publish_route(:get,"/",{}) do |the_method,the_request,the_session|
+    # end
+    Node0.publish_route(data[:http_method], data[:path], data[:options, &data[:code])
+    #
+    {:result => true}
+end
 www_service.on(:publish_api, {:description => "Publish Service API", :usage => "{ :publish_api => {:service => (service-object), :path => '/path'} }", :public => false}) do |data, credential|
     #
     ::GxGwww::publish_api(data[:service], data[:path])
