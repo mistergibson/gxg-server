@@ -849,15 +849,16 @@ module GxGwww
                     #
                     operations = []
                     the_parser = URI::Parser.new
+                    triple_parse = Proc.new {|the_string| the_parser.unescape(the_parser.unescape(the_parser.unescape(the_string)))}
                     case the_method
                     when :get
                         if the_request.params["details"].to_s.size > 0
-                            operations = (::JSON::parse( the_parser.unescape(the_parser.unescape(the_parser.unescape(the_request.params["details"].to_s.decode64))  ) ), {:symbolize_names => true})
+                            operations = ::JSON::parse( triple_parse.call(the_request.params["details"].to_s.decode64), {:symbolize_names => true} )
                         end
                     when :put
                         if the_request.body.respond_to?(:rewind) && the_request.body.respond_to?(:read)
                              the_request.body.rewind
-                             operations = (::JSON::parse( the_parser.unescape(the_parser.unescape(the_parser.unescape(the_request.body.read))) ), {:symbolize_names => true})
+                             operations = ::JSON::parse( triple_parse.call(the_request.body.read), {:symbolize_names => true} )
                         else
                             log_warn("Abnormal PUT Body #{the_request.body.inspect}")
                         end
