@@ -9,7 +9,6 @@ if [:ubuntu, :debian, :mint, :linux, :linuxmint].include?(::GxG::BOOTSTRAP[:envi
     system("sudo apt-get install build-essential libssl-dev ruby2.5-dev libsqlite3-dev libmysqlclient-dev libpq-dev libzmq5 libzmq3-dev")
   end
 end
-system("sudo jgem install #{(::File.dirname(__FILE__) << "/seeds/mimemagic-0.3.4.gem")}")
 system("sudo jgem install #{(::File.dirname(__FILE__) << "/seeds/gxg-framework-current.gem")}")
 if RUBY_ENGINE == "jruby"
   # Load base requirements: 
