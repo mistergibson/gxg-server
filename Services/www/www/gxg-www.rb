@@ -849,7 +849,12 @@ module GxGwww
                     #
                     operations = []
                     the_parser = URI::Parser.new
-                    triple_parse = Proc.new {|the_string| the_parser.unescape(the_parser.unescape(the_parser.unescape(the_parser.unescape(the_string))))}
+                    # %22
+                    triple_parse = Proc.new {|the_string| 
+                        while the_string.include?("%22")
+                            the_string = the_parser.unescape(the_string)
+                        end
+                    }
                     case the_method
                     when :get
                         if the_request.params["details"].to_s.size > 0
