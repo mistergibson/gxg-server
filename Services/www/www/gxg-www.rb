@@ -854,6 +854,7 @@ module GxGwww
                         while the_string.include?("%22")
                             the_string = the_parser.unescape(the_string)
                         end
+                        the_string
                     }
                     case the_method
                     when :get
