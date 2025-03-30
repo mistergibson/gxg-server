@@ -449,7 +449,7 @@ module GxG
         ::File.expand_path("#{::GxG::SYSTEM.gxg_root()}/#{self.vfs_root()}")
       end
       # ### API Support
-      def publish_route(the_method=:get, path, options={}, &block)
+      def publish_route(the_method=:get, path="", options={}, &block)
         if ::GxG::Services::service_available?(:www)
           ::GxG::SERVICES[:www].call_event({:publish_route => {:http_method => the_method, :path => path, :options => options, :code => block}}, ::GxG::DB[:administrator])
         end
