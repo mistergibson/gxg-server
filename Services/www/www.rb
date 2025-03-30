@@ -301,7 +301,7 @@ www_service.on(:publish_route, {:description => "Publish Route", :usage => "{ :p
     # Code Usage:
     # ::GxG::SERVICES[:core].publish_route(:get,"/",{}) do |the_method,the_request,the_session|
     # end
-    Node0.publish_route(data[:http_method], data[:path], data[:options, &data[:code]])
+    Node0.publish_route(data[:http_method], data[:path], data[:options], &data[:code])
     #
     {:result => true}
 end
