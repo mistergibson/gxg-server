@@ -1890,6 +1890,6 @@ end
 unless ($0 == "irb" || $0 == "jirb" || Module.constants.include?(:IRB))
   # ### Place-holder loop for running in the background
   while true do
-    sleep 5.0
+    sleep 5
   end
 end
