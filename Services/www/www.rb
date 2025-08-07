@@ -176,6 +176,7 @@ end
 #
 class WebSocketListener
     def initialize()
+        # @federation = ::GxG::service_object(:federation)
         self
     end
     #
@@ -184,34 +185,56 @@ class WebSocketListener
         the_socket.instance_variable_set(:@uuid, the_uuid)
         the_socket.instance_variable_set(:@session, nil)
         the_socket.instance_variable_set(:@display, nil)
-        the_socket.instance_variable_set(:@inbox, [])
+        #
+        the_channel = ::GxG::CHANNELS.create_channel(the_uuid)
+        if the_channel
+            the_channel.socket = the_socket
+        end
+        #
         GxGwww::SOCKETS_SAFETY.synchronize {
             GxGwww::SOCKETS[(the_uuid)] = the_socket
         }
-        #
+        # Un-encrypted Preamble
         GxG::SERVICES[:www].dispatcher.post_event(:communications) do
             sleep 0.5
             the_socket.send({ :attach_socket => the_uuid.to_s }.to_json.encode64, :text)
         end
+        # Reference:
+        # ::GxGwww.api_login(session_id=nil, credential=:"00000000-0000-4000-0000-000000000000")
+        # ::GxGwww.api_logout(session_id=nil)
         #
         true
     end
     #
     def on_message(the_socket, the_data, the_type)
-        message_queue = the_socket.instance_variable_get(:@inbox)
-        GxGwww::SOCKETS_SAFETY.synchronize {
-            if the_type == :text
-                begin
-                    # Expects: json+base64 of a Hash
-                    message_queue << JSON.parse(the_data.to_s.decode64, {:symbolize_names => true})
-                rescue Exception => the_error
-                    log_error({:error => the_error, :parameters => {:data => the_data}})
+        the_uuid = the_socket.instance_variable_get(:@uuid)
+        the_channel = ::GxG::CHANNELS.fetch_channel(the_uuid)
+        if the_channel
+            the_session = the_channel.socket.instance_variable_get(:@session)
+            if the_session
+                the_secret = the_session["csrf"]
+                if the_secret
+                    #
+                    begin
+                        if the_type == :text
+                            the_payload = JSON.parse(the_data.to_s.decode64, {:symbolize_names => true})
+                        else
+                            the_payload = {:body => ::GxG::ByteArray.new(the_data.to_s.decode64)}.gxg_export
+                        end
+                        the_channel.send_message(::GxG::Events::Message::import(the_payload))
+                    rescue Exception => the_error
+                        log_error(:error => the_error, :parameters => {:socket => the_socket, :data => the_data, :type => the_type})
+                    end
+                    #
+                else
+                    log_error(:error => Exception.new("No session secret found"), :parameters => {:socket => the_socket, :data => the_data, :type => the_type})
                 end
             else
-                # Takes in all other data as binary into inbox
-                message_queue << ::GxG::ByteArray.new(the_data.to_s)
+                log_error(:error => Exception.new("No session found"), :parameters => {:socket => the_socket, :data => the_data, :type => the_type})
             end
-        }
+        else
+            log_error(:error => Exception.new("No channel found"), :parameters => {:socket => the_socket, :data => the_data, :type => the_type})
+        end
         true
     end
     #
@@ -248,6 +271,8 @@ class WebSocketListener
     end
     #
 end
+# Add socket message pump for ChannelManager
+
 # Load GxGwww:
 require (File.expand_path("./www/gxg-www.rb",File.dirname(__FILE__)))
 www_service[:manifests] = {}

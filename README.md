@@ -4,6 +4,7 @@ Requirements:
 
 JRuby (any recent version)
 Thus far it has only been tested on Ubuntu Server
+Database prep: UPDATE mysql.user SET Super_Priv="Y" WHERE user='www-data' AND host='%';
 
 Installation:
 

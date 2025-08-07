@@ -364,6 +364,7 @@ module GxG
       else
         false
       end
+      #
     end
     #
     def self.disable_service(moniker=nil)
@@ -454,11 +455,13 @@ module GxG
           ::GxG::SERVICES[:www].call_event({:publish_route => {:http_method => the_method, :path => path, :options => options, :code => block}}, ::GxG::DB[:administrator])
         end
       end
+      #
       def publish_api()
         if ::GxG::Services::service_available?(:www)
           ::GxG::SERVICES[:www].call_event({:publish_api => {:service => self, :path => "/#{@provides.to_s}"}}, ::GxG::DB[:administrator])
         end
       end
+      #
       def unpublish_api()
         if ::GxG::Services::service_available?(:www)
           ::GxG::SERVICES[:www].call_event({:unpublish_api => {:path => "/#{@provides.to_s}"}}, ::GxG::DB[:administrator])
@@ -1797,11 +1800,22 @@ core_service.on(:at_start, {:description => "System Service Layer Startup", :usa
     ::GxG::Engine::determine_event_allocations()
     ::GxG::Engine::determine_loads()
   end
+end
+core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service|
+  # ### Stop Services
+  ::GxG::Services::stop_order().each do |the_service_moniker|
+    unless the_service_moniker == :core
+      log_info("Stopping Service: #{the_service_moniker.inspect} ...")
+      ::GxG::Services::stop_service(the_service_moniker)
+    end
+  end
+  #
   # ### Load Services
   if service.configuration()[:available]
     service.configuration()[:available].each do |moniker|
       unless service.configuration()[:disabled].include?(moniker)
         service_file_path = ::File.expand_path("#{File.dirname(__FILE__)}/#{moniker}/#{moniker}.rb")
+        puts "Loading : #{service_file_path}"
         if ::File.exists?(service_file_path)
           begin
             require (service_file_path)
@@ -1834,18 +1848,7 @@ core_service.on(:at_start, {:description => "System Service Layer Startup", :usa
       end
     end
   end
-  #
-end
 #
-core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service|
-  # ### Stop Services
-  ::GxG::Services::stop_order().each do |the_service_moniker|
-    unless the_service_moniker == :core
-      log_info("Stopping Service: #{the_service_moniker.inspect} ...")
-      ::GxG::Services::stop_service(the_service_moniker)
-    end
-  end
-  #
 end
 # ### Provide Universal Resouce Access
 core_service[:resources] = ::GxG::Services::UniversalResourcesAccess.new()

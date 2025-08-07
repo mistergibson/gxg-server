@@ -20,6 +20,9 @@ module GxGwww
     API = {}
     API_SESSIONS = {}
     API_THREAD_SAFETY = ::Mutex.new
+    def self.service_object(moniker=nil)
+        API_THREAD_SAFETY.synchronize { ::GxG::API[(moniker.to_s.to_sym)] }
+    end
     def self.publish_api(the_service=nil, the_path=nil)
         if the_service && the_path
             the_controller = ::GxGwww::APIController.new(the_service, the_path)
@@ -939,7 +942,7 @@ module GxGwww
                                         else
                                             raise Exception, "Manifest Not Found For Session."
                                         end
-                                        puts "Websocket Attached: #{the_uuid.inspect}"
+                                        log_info "Websocket Attached: #{the_uuid.inspect}"
                                         response = [200, {"content-type" => "application/json"}, {:result => true}.to_json()]
                                         break
                                     end
@@ -1166,7 +1169,17 @@ module GxGwww
                             if the_controller
                                 response = the_controller.process(the_method, the_request, the_session)
                             else
-                                response = [404, {"content-type" => "application/text"}, "Endpoint Not Found"]
+                                if request_path.to_s.downcase == "/api/interface"
+                                    items = []
+                                    ::GxGwww::API_THREAD_SAFETY.synchronize {
+                                        ::GxGwww::API.each_pair do |the_path, the_handler|
+                                            items << {:provides => File::basename(the_path).to_s.downcase, :path => (GxG::SERVICES[:www].configuration[:relative_url] + the_path)}
+                                        end
+                                    }
+                                    response = [200, {"content-type" => "application/json"}, {:result => items, error => nil}.to_json()]
+                                else
+                                    response = [404, {"content-type" => "application/text"}, "Endpoint Not Found"]
+                                end
                             end
                        else
                             if ["", "/", "/index"].include?(request_path) || ::GxG::SERVICES[:core][:resources].exist?("/Public/www/content/pages#{request_path}")
