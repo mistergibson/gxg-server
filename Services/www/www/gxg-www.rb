@@ -929,13 +929,20 @@ module GxGwww
                                     the_uuid = parameters.to_s.to_sym
                                     if ::GxG::valid_uuid?(the_uuid)
                                         GxGwww::SOCKETS_SAFETY.synchronize {
-                                            GxGwww::SOCKETS[(the_uuid)].instance_variable_set(:@session, the_session['session_id'])
+                                            GxGwww::SOCKETS[(the_uuid)].instance_variable_set(:@session, the_session)
+                                            # GxGwww::SOCKETS[(the_uuid)].instance_variable_set(:@session, the_session['session_id'])
                                             GxGwww::SOCKETS[(the_uuid)].instance_variable_set(:@display, the_display)
                                         }
                                         if GxG::SERVICES[:www][:manifests][(the_session['session_id'])]
                                             connector = GxG::SERVICES[:www][:manifests][(the_session['session_id'])].connector_get(the_display)
                                             if connector
                                                 connector.set_socket_uuid(the_uuid)
+                                                the_channel = ::GxG::CHANNELS.fetch_channel(the_uuid)
+                                                if the_channel
+                                                    the_channel.secret = the_session["csrf"]
+                                                else
+                                                    raise Exception, "Channel #{the_uuid.to_s.to_sym.inspect} Not Found."
+                                                end
                                             else
                                                 raise Exception, "Connector Not Found."
                                             end
