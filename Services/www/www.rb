@@ -216,12 +216,21 @@ class WebSocketListener
                 if the_secret
                     #
                     begin
-                        if the_type == :text
-                            the_payload = JSON.parse(the_data.to_s.decode64, {:symbolize_names => true})
+                        # ::GxG::Events::Message::import(the_data.decode64.decrypt(the_secret))
+                        # Send format: channel.socket.send({ :payload => the_message.export.to_s.encrypt(channel.secret).encode64 }.to_json.encode64, :text)
+                        op_frame = JSON.parse(the_data.to_s.decode64, {:symbolize_names => true})
+                        if op_frame.is_a?(::Hash)
+                            if op_frame[:payload]
+                                the_channel.send_message(::GxG::Events::Message::import(JSON.parse(op_frame[:payload].to_s.decode64.decrypt(the_secret), {:symbolize_names => true})))
+                            end
                         else
-                            the_payload = {:body => ::GxG::ByteArray.new(the_data.to_s.decode64)}.gxg_export
                         end
-                        the_channel.send_message(::GxG::Events::Message::import(the_payload))
+                        # if the_type == :text
+                        #     the_payload = JSON.parse(the_data.to_s.decode64.decrypt(the_secret), {:symbolize_names => true})
+                        # else
+                        #     the_payload = {:body => ::GxG::ByteArray.new(the_data.to_s.decode64.decrypt(the_secret))}.gxg_export
+                        # end
+                        # the_channel.send_message(::GxG::Events::Message::import(the_payload))
                     rescue Exception => the_error
                         log_error(:error => the_error, :parameters => {:socket => the_socket, :data => the_data, :type => the_type})
                     end
