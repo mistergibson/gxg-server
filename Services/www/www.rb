@@ -257,7 +257,7 @@ class WebSocketListener
         the_display = the_socket.instance_variable_get(:@display)
         #
         if the_display
-            the_manifest = GxG::SERVICES[:www][:manifests][(the_session)]
+            the_manifest = GxG::SERVICES[:www][:manifests][(the_session['session_id'])]
             if the_manifest
                 if the_manifest.display_exist?(the_display)
                     the_manifest.display_set(the_display, :available)
@@ -271,6 +271,17 @@ class WebSocketListener
         GxGwww::SOCKETS_SAFETY.synchronize {
             GxGwww::SOCKETS.delete(the_uuid)
         }
+        prune_list = []
+        ::GxG::GXG_FEDERATION_SAFETY.synchronize {
+            ::GxG::GXG_FEDERATION[:connections].each_pair do |uuid, the_channel|
+                if the_socket == the_channel.socket
+                    prune_list << uuid
+                end
+            end
+        }
+        prune_list.each do |uuid|
+            ::GxG::CHANNELS.destroy_channel(uuid)
+        end
         puts "Closing Socket #{the_uuid} & Display #{the_display}"
         true
     end

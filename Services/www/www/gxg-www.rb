@@ -943,6 +943,7 @@ module GxGwww
                                                 else
                                                     raise Exception, "Channel #{the_uuid.to_s.to_sym.inspect} Not Found."
                                                 end
+
                                             else
                                                 raise Exception, "Connector Not Found."
                                             end
@@ -974,6 +975,9 @@ module GxGwww
                                 unless ::GxG::valid_uuid?(remote_uuid.to_s)
                                     raise "Invalid Remote ID."
                                 end
+                                # Federation
+                                the_channel = ::GxG::CHANNELS.create_channel(remote_uuid)
+                                # ???
                                 # xxx
                                 unless the_display
                                     # Expire old Displays and set to :available
@@ -1344,6 +1348,15 @@ module GxGwww
         # Callable Toolbox
         def set_socket_uuid(the_uuid)
             @socket = the_uuid
+            socket_channel = ::GxG::CHANNELS.fetch_channel(@socket.to_s.to_sym)
+            display_channel = ::GxG::CHANNELS.fetch_channel(@remote_uuid.to_s.to_sym)
+            if socket_channel && display_channel
+                display_channel.socket = socket_channel.socket
+                display_channel.secret = socket_channel.secret
+            else
+                raise Exception.new("Failed to bind display and socket")
+            end
+            true
         end
         #
         def admin_get_roles()
