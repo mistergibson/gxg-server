@@ -223,6 +223,19 @@ class WebSocketListener
                             if op_frame[:payload]
                                 the_channel.send_message(::GxG::Events::Message::import(JSON.parse(op_frame[:payload].to_s.decode64.decrypt(the_secret), {:symbolize_names => true})))
                             end
+                            if op_frame[:open_channel]
+                                unless ::GxG::CHANNELS.fetch_channel(op_frame[:open_channel].to_s.to_sym)
+                                    ::GxG::CHANNELS.create_channel(op_frame[:open_channel].to_s.to_sym)
+                                    new_channel = ::GxG::CHANNELS.fetch_channel(op_frame[:open_channel].to_s.to_sym)
+                                    if new_channel
+                                        new_channel.socket = the_channel.socket
+                                        new_channel.secret = the_channel.secret
+                                    end
+                                end
+                            end
+                            if op_frame[:close_channel]
+                                ::GxG::CHANNELS.destroy_channel(op_frame[:close_channel].to_s.to_sym)
+                            end
                         else
                         end
                         # if the_type == :text
