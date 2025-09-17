@@ -976,7 +976,7 @@ module GxGwww
                                     raise "Invalid Remote ID."
                                 end
                                 # Federation
-                                # the_channel = ::GxG::CHANNELS.create_channel(remote_uuid)
+                                # Gthe_channel = ::GxG::CHANNELS.create_channel(remote_uuid)
                                 # ???
                                 # xxx
                                 unless the_display

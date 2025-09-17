@@ -213,6 +213,7 @@ class WebSocketListener
             the_session = the_channel.socket.instance_variable_get(:@session)
             if the_session
                 the_secret = the_session["csrf"]
+                the_credential = (the_session['credential'] || :"00000000-0000-4000-0000-000000000000").to_s.to_sym
                 if the_secret
                     #
                     begin
@@ -220,21 +221,23 @@ class WebSocketListener
                         # Send format: channel.socket.send({ :payload => the_message.export.to_s.encrypt(channel.secret).encode64 }.to_json.encode64, :text)
                         op_frame = JSON.parse(the_data.to_s.decode64, {:symbolize_names => true})
                         if op_frame.is_a?(::Hash)
-                            if op_frame[:payload]
-                                the_channel.send_message(::GxG::Events::Message::import(JSON.parse(op_frame[:payload].to_s.decode64.decrypt(the_secret), {:symbolize_names => true})))
-                            end
-                            if op_frame[:open_channel]
-                                unless ::GxG::CHANNELS.fetch_channel(op_frame[:open_channel].to_s.to_sym)
-                                    ::GxG::CHANNELS.create_channel(op_frame[:open_channel].to_s.to_sym)
-                                    new_channel = ::GxG::CHANNELS.fetch_channel(op_frame[:open_channel].to_s.to_sym)
-                                    if new_channel
-                                        new_channel.socket = the_channel.socket
-                                        new_channel.secret = the_channel.secret
+                            unless the_credential == :"00000000-0000-4000-0000-000000000000"
+                                if op_frame[:payload]
+                                    the_channel.send_message(::GxG::Events::Message::import(JSON.parse(op_frame[:payload].to_s.decode64.decrypt(the_secret), {:symbolize_names => true})))
+                                end
+                                if op_frame[:open_channel]
+                                    unless ::GxG::CHANNELS.fetch_channel(op_frame[:open_channel].to_s.to_sym)
+                                        ::GxG::CHANNELS.create_channel(op_frame[:open_channel].to_s.to_sym)
+                                        new_channel = ::GxG::CHANNELS.fetch_channel(op_frame[:open_channel].to_s.to_sym)
+                                        if new_channel
+                                            new_channel.socket = the_channel.socket
+                                            new_channel.secret = the_channel.secret
+                                        end
                                     end
                                 end
-                            end
-                            if op_frame[:close_channel]
-                                ::GxG::CHANNELS.destroy_channel(op_frame[:close_channel].to_s.to_sym)
+                                if op_frame[:close_channel]
+                                    ::GxG::CHANNELS.destroy_channel(op_frame[:close_channel].to_s.to_sym)
+                                end
                             end
                         else
                         end
