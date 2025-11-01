@@ -12,7 +12,7 @@ module Gem::UserInteraction
 	def terminate_interaction(exit_code = 0)
 		# Suppress the instruction to exit ruby:
 		# ui.terminate_interaction exit_code
-	  end
+	end
 end
 #
 class Object
@@ -1801,7 +1801,7 @@ core_service.on(:at_start, {:description => "System Service Layer Startup", :usa
     ::GxG::Engine::determine_loads()
   end
 end
-core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service|
+core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service, credential|
   # ### Stop Services
   ::GxG::Services::stop_order().each do |the_service_moniker|
     unless the_service_moniker == :core
@@ -1837,16 +1837,6 @@ core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usa
       end
     end
     #
-  end
-  # ### Startup Scripts
-  Dir.entries("#{::GxG::SYSTEM_PATHS[:system]}/Startup").each do |entry|
-    if File.extname(entry) == ".rb"
-      begin
-        require "#{::GxG::SYSTEM_PATHS[:system]}/Startup/#{entry}"
-      rescue Exception => the_error
-        log_error({:error => the_error})
-      end
-    end
   end
 #
 end
@@ -1888,6 +1878,17 @@ end
 Signal.trap("HUP") do
   ::GxG::Services::stop_service(:core)
   exit(0)
+end
+#
+# ### Startup Scripts
+Dir.entries("#{::GxG::SYSTEM_PATHS[:system]}/Startup").each do |entry|
+  if File.extname(entry) == ".rb"
+    begin
+      require "#{::GxG::SYSTEM_PATHS[:system]}/Startup/#{entry}"
+    rescue Exception => the_error
+      log_error({:error => the_error})
+    end
+  end
 end
 #
 unless ($0 == "irb" || $0 == "jirb" || Module.constants.include?(:IRB))

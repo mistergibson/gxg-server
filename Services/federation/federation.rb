@@ -20,24 +20,26 @@ federation_service.on(:resume, {:description => "Federation Service Resume", :us
 end
 # ### Define Internal Service Control Events:
 federation_service.on(:at_start, {:description => "Federation Startup", :usage => "{ :at_start => (service-object) }"}) do |service, credential|
-    # ::GxG::GXG_FEDERATION = {:title => "Untitled", :uuid => nil, :available => {}, :connections => {}}
+  # GXG_FEDERATION = {:title => "Untitled", :uuid => nil, :access_url => nil, :available => {}, :connections => {}}
     ::GxG::GXG_FEDERATION_SAFETY.synchronize {
       ::GxG::GXG_FEDERATION[:uuid] = federation_service.configuration[:uuid]
       ::GxG::GXG_FEDERATION[:title] = federation_service.configuration[:title]
+      # ::GxG::SERVICES[:www].configuration[:relative_url]
+      ::GxG::GXG_FEDERATION[:access_url] = federation_service.configuration[:access_url]
     }
     #
     {:result => true}
 end
 #
-federation_service.on(:at_stop, {:description => "Federation Stop", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service|
+federation_service.on(:at_stop, {:description => "Federation Stop", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service,credential|
     #
     
     #
     {:result => true}
 end
 #
-federation_service.on(:connect, {:description => "Federation Connect", :usage => "{ :connect => (uuid) }", :public => false}) do |data|
-    #
+federation_service.on(:connect, {:description => "Federation Connect", :usage => "{ :connect => {:uuid => (uuid), :username => String, :password => String} }", :public => false}) do |data, credential|
+    # {:uuid => localuuid, :title => localtitle, :access_url => localaccess, :bridge_challenge => @bridge_challenge}
     if ::GxG::valid_uuid?(data.to_s.to_sym)
       ::GxG::CHANNELS.create_channel(data.to_s.to_sym)
       ::GxG::GXG_FEDERATION_SAFETY.synchronize { {:result => {:uuid => ::GxG::GXG_FEDERATION[:uuid], :title => ::GxG::GXG_FEDERATION[:title]}} }
@@ -47,7 +49,7 @@ federation_service.on(:connect, {:description => "Federation Connect", :usage =>
     #
 end
 #
-federation_service.on(:disconnect, {:description => "Federation Disconnect", :usage => "{ :disconnect => (uuid) }", :public => false}) do |data|
+federation_service.on(:disconnect, {:description => "Federation Disconnect", :usage => "{ :disconnect => (uuid) }", :public => false}) do |data,credential|
     #
     if ::GxG::valid_uuid?(data.to_s.to_sym)
       ::GxG::CHANNELS.destroy_channel(data.to_s.to_sym)
@@ -58,7 +60,7 @@ federation_service.on(:disconnect, {:description => "Federation Disconnect", :us
     #
 end
 #
-federation_service.on(:operation, {:description => "Perform Operation(s)", :usage => "{ :operation => (Hash/Array) }", :public => false}) do |data|
+federation_service.on(:operation, {:description => "Perform Operation(s)", :usage => "{ :operation => (Hash/Array) }", :public => false}) do |data,credential|
     # operation(data)
     result = {:result => false}
     if data.is_any?(::Array, ::Hash)
@@ -103,7 +105,7 @@ federation_service.on(:operation, {:description => "Perform Operation(s)", :usag
     result
 end
 #
-federation_service.on(:channel_exist, {:description => "Does a channel exist?", :usage => "{ :channel_exist => (uuid) }", :public => false}) do |data|
+federation_service.on(:channel_exist, {:description => "Does a channel exist?", :usage => "{ :channel_exist => (uuid) }", :public => false}) do |data,credential|
     # channel_exist(the_uuid)
     if ::GxG::valid_uuid?(data.to_s.to_sym)
       the_channel = ::GxG::CHANNELS.fetch_channel(data.to_s.to_sym)
@@ -119,7 +121,7 @@ federation_service.on(:channel_exist, {:description => "Does a channel exist?", 
 end
 #
 #
-federation_service.on(:next_message, {:description => "Get a message", :usage => "{ :next_message => (uuid) }", :public => false}) do |data|
+federation_service.on(:next_message, {:description => "Get a message", :usage => "{ :next_message => (uuid) }", :public => false}) do |data,credential|
     # next_message(the_uuid)
     if ::GxG::valid_uuid?(data.to_s.to_sym)
       {:result => ::GxG::CHANNELS.next_message(data.to_s.to_sym)}
@@ -129,7 +131,7 @@ federation_service.on(:next_message, {:description => "Get a message", :usage =>
     #
 end
 #
-federation_service.on(:send_message, {:description => "Send a message", :usage => "{ :send_message => {:uuid => (uuid), :message => (message)} }", :public => false}) do |data|
+federation_service.on(:send_message, {:description => "Send a message", :usage => "{ :send_message => {:uuid => (uuid), :message => (message)} }", :public => false}) do |data,credential|
     # send_message(the_uuid, the_message)
     if ::GxG::valid_uuid?(data[:uuid].to_s.to_sym)
       {:result => ::GxG::CHANNELS.send_message(data[:uuid].to_s.to_sym, data[:message])}
@@ -144,6 +146,8 @@ unless ::GxG::Services::service_available?(:federation)
     # Set Configuration Defaults
     federation_service.configuration[:title] = "Untitled"
     federation_service.configuration[:uuid] = ::GxG::uuid_generate.to_s
+    federation_service.configuration[:access_url] = nil
+    # ::GxG::SERVICES[:www].configuration[:relative_url]
     federation_service.save_configuration
     ::GxG::Services::install_service(:federation)
     ::GxG::Services::enable_service(:federation)
