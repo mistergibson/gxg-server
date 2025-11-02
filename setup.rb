@@ -88,13 +88,13 @@ module GxG
   SERVER_PATHS = {:root => gxg_root, :system => system_dir, :services => services_dir, :temporary => tmp_dir, :logs => log_dir, :installers => installer_dir, :public => public_dir,  :configuration => sys_config_dir, :themes => pub_theme_dir, :javascript => pub_js_dir, :images => pub_image_dir, :audio => pub_audio_dir, :video => pub_video_dir, :databases => sys_db_dir, :extensions => sys_ext_dir, :gems => sys_gem_dir, :libraries => sys_lib_dir, :users => user_dir}
 end
 # Core Configuration
-unless File.exists?("#{GxG::SERVER_PATHS[:configuration]}/core.json")
+unless File.exist?("#{GxG::SERVER_PATHS[:configuration]}/core.json")
     handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/core.json", "wb")
     handle.write(::JSON.pretty_generate({:enabled => ["www"], :disabled => [], :available => ["www"]}))
     handle.close
 end
 # WWW Configuration
-unless File.exists?("#{GxG::SERVER_PATHS[:configuration]}/www.json")
+unless File.exist?("#{GxG::SERVER_PATHS[:configuration]}/www.json")
     handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/www.json", "wb")
     handle.write(::JSON.pretty_generate({:mode => "production", :listen => [{:address => "127.0.0.1", :port => 32767}], :relative_url => "", :cache_quota => 1073741824, :cache_max_item_size => 1073741824}))
     handle.close
@@ -103,7 +103,7 @@ end
 def configure_db()
     # Construct default configuration files:
     # Database Configuration:
-    if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
+    if File.exist?("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
         handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/databases.json", "rb")
         db_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
         handle.close
@@ -134,7 +134,7 @@ def configure_db()
         end
     end
     #
-    if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
+    if File.exist?("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
         File.delete("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
     end
     handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/databases.json","w+b", 0664)
@@ -149,7 +149,7 @@ db_configuration = configure_db()
 def configure_vfs()
     # VFS Mounting Configuration:
     reserved_roles = ["users", "data"]
-    if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
+    if File.exist?("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
       handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/mounts.json", "rb")
       mount_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
       handle.close
@@ -191,7 +191,7 @@ def configure_vfs()
         end
       end
     end
-    if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
+    if File.exist?("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
       File.delete("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
     end
     handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/mounts.json","w+b", 0664)
@@ -274,7 +274,7 @@ def admin_setup(db_pool, mount_config)
             end
             #
             admin_config = {:credential => credential}
-            if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/db_admin.json")
+            if File.exist?("#{GxG::SERVER_PATHS[:configuration]}/db_admin.json")
                 File.delete("#{GxG::SERVER_PATHS[:configuration]}/db_admin.json")
             end
             handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/db_admin.json","w+b", 0664)
@@ -283,7 +283,7 @@ def admin_setup(db_pool, mount_config)
             GxG::DB[:administrator] = credential
         else
             # has already been setup.
-            if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/db_admin.json")
+            if File.exist?("#{GxG::SERVER_PATHS[:configuration]}/db_admin.json")
                 handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/db_admin.json","rb")
                 admin_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
                 handle.close

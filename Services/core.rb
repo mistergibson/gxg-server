@@ -82,8 +82,8 @@ class Object
 	public
 end
 # ### Mount Databases by role
-if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
-    handle = File.open("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json", "rb")
+if ::File.exist?("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json")
+    handle = ::File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json", "rb")
     db_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
     handle.close
     # ### Set DB Roles, and other details
@@ -206,7 +206,7 @@ end
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:public]}), "/Public")
 # Populate Optional VFS mount points
 if GxG::valid_uuid?(GxG::DB[:administrator])
-    if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/mounts.json")
+    if File.exist?("#{GxG::SYSTEM_PATHS[:configuration]}/mounts.json")
         handle = File.open("#{GxG::SYSTEM_PATHS[:configuration]}/mounts.json", "rb")
         mount_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
         handle.close
@@ -493,7 +493,7 @@ module GxG
       def save_configuration(options={})
         result = false
         config_path = ::File.expand_path(::GxG::SYSTEM_PATHS[:configuration] + "/" + "#{@provides.to_s}.json")
-        if File.exists?(config_path)
+        if File.exist?(config_path)
           File.delete(config_path)
         end
         begin
@@ -510,7 +510,7 @@ module GxG
       def load_configuration(options={})
         result = false
         config_path = ::File.expand_path(::GxG::SYSTEM_PATHS[:configuration] + "/" + "#{@provides.to_s}.json")
-        if File.exists?(config_path)
+        if File.exist?(config_path)
           handle = File.open(config_path, "rb", 0664)
           begin
             @configuration =::JSON::parse(handle.read(), {:symbolize_names => true})
@@ -1816,7 +1816,7 @@ core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usa
       unless service.configuration()[:disabled].include?(moniker)
         service_file_path = ::File.expand_path("#{File.dirname(__FILE__)}/#{moniker}/#{moniker}.rb")
         puts "Loading : #{service_file_path}"
-        if ::File.exists?(service_file_path)
+        if ::File.exist?(service_file_path)
           begin
             require (service_file_path)
           rescue Exception => the_error
