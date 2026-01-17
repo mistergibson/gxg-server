@@ -1,2 +1,4 @@
 #!/usr/bin/env jruby
-system("/usr/bin/env jirb -r ./Services/core.rb")
+#--enable-native-access=ALL-UNNAMED
+#--enable-native-access=org.jruby.dist
+system("JAVA_OPTS='--enable-native-access=ALL-UNNAMED --enable-native-access=org.jruby.dist' /usr/bin/env jirb -r ./Services/core.rb")
