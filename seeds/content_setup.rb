@@ -151,7 +151,7 @@ module GxGwww
             # the_format[:uuid] = :"58230f5b-83c9-4569-bb82-8564fffd5d74"
             # the_format[:ufs] = "org.gxg.file"
             # the_format[:title] = "File"
-            # the_format[:version] = 0.0001
+            # the_format[:version] = 0.0001.to_d
             # the_format[:content] = file_format
             # if GxG::DB[:roles][:formats].format_list({:uuid => the_format[:uuid]}).size == 0
             #     GxG::DB[:roles][:formats].format_create(the_format)
@@ -167,7 +167,7 @@ module GxGwww
             the_format[:uuid] = :"cceb380b-fbc7-4dc9-ab75-3bf2c43d697b"
             the_format[:ufs] = "org.gxg.gui.component.page"
             the_format[:title] = "Page"
-            the_format[:version] = 0.0001
+            the_format[:version] = 0.0001.to_d
             the_format[:content] = page_format
             if GxG::DB[:roles][:formats].format_list({:uuid => the_format[:uuid]}).size == 0
                 GxG::DB[:roles][:formats].format_create(the_format)
@@ -183,7 +183,7 @@ module GxGwww
             the_format[:uuid] = :"2884f52a-29fd-4ac6-add7-69f91f805fd3"
             the_format[:ufs] = "org.gxg.component.library"
             the_format[:title] = "Library"
-            the_format[:version] = 0.0001
+            the_format[:version] = 0.0001.to_d
             the_format[:content] = lib_format
             if GxG::DB[:roles][:formats].format_list({:uuid => the_format[:uuid]}).size == 0
                 GxG::DB[:roles][:formats].format_create(the_format)
@@ -199,7 +199,7 @@ module GxGwww
             the_format[:uuid] = :"04ce09a6-c6e8-43d9-90e3-69f34d3be0a3"
             the_format[:ufs] = "org.gxg.component.application"
             the_format[:title] = "Application"
-            the_format[:version] = 0.0001
+            the_format[:version] = 0.0001.to_d
             the_format[:content] = app_format
             if GxG::DB[:roles][:formats].format_list({:uuid => the_format[:uuid]}).size == 0
                 GxG::DB[:roles][:formats].format_create(the_format)
@@ -250,7 +250,7 @@ module GxGwww
                 the_format[:uuid] = stub[:uuid]
                 the_format[:ufs] = stub[:ufs]
                 the_format[:title] = stub[:title]
-                the_format[:version] = 0.0001
+                the_format[:version] = 0.0001.to_d
                 case component
                 when :table
                 end
@@ -260,12 +260,12 @@ module GxGwww
                 else
                     existing_format = GxG::DB[:roles][:formats].format_load({:uuid => the_format[:uuid]})
                     if existing_format
-                        the_format[:version] = (((existing_format[:version] += 0.0001) * 10000.0).to_i.to_f / 10000.0)
+                        the_format[:version] = (((existing_format[:version] += 0.0001) * 10000.0).to_i.to_f / 10000.0).to_d
                     end
                     GxG::DB[:roles][:formats].format_update(the_format)
                 end
             end
-            # # Sync all formats with othe DBs.
+            # # Sync all formats with other DBs.
             # puts "Syncronizing formats to other DB roles..."
             # #
             # format_list = []
@@ -1472,7 +1472,7 @@ module GxGwww
             # Dialog Boxes:
             # ----------------------------------------------------------------------------------------
             # Permissions for Item:
-            info_text = {:component=>"text", :options=> {:content => "Select a Group & Role to set its permissions:", :style => {:"font-size" => "16px"}}, :content => [], :script => ""}
+            info_text = {:component=>"text", :options=> {:content => "Select a Role to set its permissions:", :style => {:"font-size" => "16px"}}, :content => [], :script => ""}
             info_cell = {:component => "block_table_cell", :options => {:style => {:padding => "0px", :margin => "0px", :width => "80%"}}, :content => [(info_text)], :script => ""}
             # User / Role selector
             # {:icon => "<src>", :icon_width => 32, :icon_height => 32, :label => "", :uuid => "<uuid>"}
@@ -2444,18 +2444,18 @@ module GxGwww
         end
         #
         def self.populate_new_site()
-            # GxGwww::Setup::setup_formats()
+            GxGwww::Setup::setup_formats()
             GxGwww::Setup::setup_content_dirs()
             GxGwww::Setup::setup_software_dirs()
-            # GxGwww::Setup::setup_ace_lib()
-            # GxGwww::Setup::setup_css_setup()
+            GxGwww::Setup::setup_ace_lib()
+            GxGwww::Setup::setup_css_setup()
             GxGwww::Setup::setup_css_default()
-            # GxGwww::Setup::setup_switcher_app()
-            # GxGwww::Setup::setup_menu_app()
-            # GxGwww::Setup::setup_login_app()
+            GxGwww::Setup::setup_switcher_app()
+            GxGwww::Setup::setup_menu_app()
+            GxGwww::Setup::setup_login_app()
             GxGwww::Setup::setup_browser_app()
             GxGwww::Setup::setup_index_page()
-            # GxGwww::Setup::setup_setup_page()
+            GxGwww::Setup::setup_setup_page()
             true
         end
         #

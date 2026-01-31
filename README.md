@@ -2,7 +2,7 @@ GxG Server
 
 Requirements:
 
-JRuby (any recent version)
+JRuby ( found here: https://www.jruby.org/files/downloads/9.4.14.0/index.html )
 Thus far it has only been tested on Ubuntu Server
 Database prep: UPDATE mysql.user SET Super_Priv="Y" WHERE user='www-data' AND host='%';
 

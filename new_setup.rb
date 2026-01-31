@@ -7,7 +7,7 @@ module Gem::UserInteraction
 	def terminate_interaction(exit_code = 0)
 		# Suppress the instruction to exit ruby:
 		# ui.terminate_interaction exit_code
-	  end
+  end
 end
 #
 class Object
@@ -27,6 +27,9 @@ module GxG
   # Define Server directories, ensure directories are present
   SYSTEM_PATHS = ::GxG::SYSTEM.server_paths()
 end
+# ### ???
+puts "Got >> " << ::GxG::SYSTEM_PATHS.inspect
+# gxg_root = ::GxG::SYSTEM.gxg_root
 ::GxG::SYSTEM_PATHS.values.each do |a_path|
   if a_path
     unless Dir.exist?(a_path)
@@ -39,7 +42,7 @@ end
   end
 end
 # ### Flesh out www dirs
-public_dir = File.expand_path("./Public",gxg_root)
+public_dir = File.expand_path("./Public",::GxG::SYSTEM.gxg_root)
 unless Dir.exist?(public_dir)
     Dir.mkdir(public_dir, 0775)
 end
@@ -64,25 +67,25 @@ unless Dir.exist?(pub_video_dir)
     Dir.mkdir(pub_video_dir, 0775)
 end
 # Ensure specs dir is present
-if Dir.exist?(GxG::SYSTEM_PATHS[:gems])
-  unless Dir.exist?("#{GxG::SYSTEM_PATHS[:gems]}/specs")
+if Dir.exist?(::GxG::SYSTEM_PATHS[:gems])
+  unless Dir.exist?("#{::GxG::SYSTEM_PATHS[:gems]}/specs")
     begin
-      FileUtils.mkpath("#{GxG::SYSTEM_PATHS[:gems]}/specs")
+      FileUtils.mkpath("#{::GxG::SYSTEM_PATHS[:gems]}/specs")
     rescue Exception => error
-      log_error({:error => error, :parameters => "#{GxG::SYSTEM_PATHS[:gems]}/specs"})
+      log_error({:error => error, :parameters => "#{::GxG::SYSTEM_PATHS[:gems]}/specs"})
     end
   end
 else
   begin
-    FileUtils.mkpath("#{GxG::SYSTEM_PATHS[:gems]}/specs")
+    FileUtils.mkpath("#{::GxG::SYSTEM_PATHS[:gems]}/specs")
   rescue Exception => error
-    log_error({:error => error, :parameters => "#{GxG::SYSTEM_PATHS[:gems]}/specs"})
+    log_error({:error => error, :parameters => "#{::GxG::SYSTEM_PATHS[:gems]}/specs"})
   end
 end
 # Setup Rubygems paths
-ENV['GEM_HOME']=GxG::SYSTEM_PATHS[:gems]
-ENV['GEM_SPEC_CACHE']="#{GxG::SYSTEM_PATHS[:gems]}/specs"
-ENV['GEM_PATH']=[(GxG::SYSTEM_PATHS[:gems]), (Gem.paths.path)].flatten.join(":")
+ENV['GEM_HOME']=::GxG::SYSTEM_PATHS[:gems]
+ENV['GEM_SPEC_CACHE']="#{::GxG::SYSTEM_PATHS[:gems]}/specs"
+ENV['GEM_PATH']=[(::GxG::SYSTEM_PATHS[:gems]), (Gem.paths.path)].flatten.join(":")
 Gem.clear_paths
 Gem.paths = ENV
 #
@@ -91,27 +94,27 @@ class Object
 	def gem_install(gem_name=nil,version_info=nil)
 		if gem_name.is_any?(::String, ::Symbol) && version_info.is_any?(::String, ::NilClass)
 			if version_info
-        gem_command("install --install-dir #{GxG::SYSTEM_PATHS[:gems]} --version #{version_info.to_s} #{gem_name.to_s}")
+        gem_command("install --install-dir #{::GxG::SYSTEM_PATHS[:gems]} --version #{version_info.to_s} #{gem_name.to_s}")
       else
-        gem_command("install --install-dir #{GxG::SYSTEM_PATHS[:gems]} #{gem_name.to_s}")
+        gem_command("install --install-dir #{::GxG::SYSTEM_PATHS[:gems]} #{gem_name.to_s}")
       end
-		end
-  else
-    raise Exception, "Invalid gem or version specifier"
-	end
+    else
+      raise Exception, "Invalid gem or version specifier"
+    end
+  end
 	public
 end
 # ### Establish Mount Details
 
 # Core Configuration
-unless File.exists?("#{GxG::SERVER_PATHS[:configuration]}/core.json")
-  handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/core.json", "wb")
+unless File.exists?("#{::GxG::SYSTEM_PATHS[:configuration]}/core.json")
+  handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/core.json", "wb")
   handle.write(::JSON.pretty_generate({:enabled => ["www"], :disabled => [], :available => ["www"]}))
   handle.close
 end
 # WWW Configuration
-unless File.exists?("#{GxG::SERVER_PATHS[:configuration]}/www.json")
-  handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/www.json", "wb")
+unless File.exists?("#{::GxG::SYSTEM_PATHS[:configuration]}/www.json")
+  handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/www.json", "wb")
   handle.write(::JSON.pretty_generate({:mode => "production", :listen => [{:address => "127.0.0.1", :port => 32767}], :relative_url => "", :cache_quota => 1073741824, :cache_max_item_size => 1073741824}))
   handle.close
 end
@@ -119,8 +122,8 @@ end
 def configure_db()
   # Construct default configuration files:
   # Database Configuration:
-  if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
-      handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/databases.json", "rb")
+  if File.exists?("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json")
+      handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json", "rb")
       db_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
       handle.close
   else
@@ -132,9 +135,9 @@ def configure_db()
   puts "--------------------------\n"
   puts "0) save, 1) create new db config\n"
   if gets("\n").to_s.split("\n")[0].to_s.to_i == 1
-      new_config = []
-      editing = true
-      while editing == true do
+    new_config = []
+    editing = true
+    while editing == true do
       puts "Current NEW configuration:\n#{new_config.inspect}\n"
       puts "--------------------------\n"
       puts "\nEnter a database URL (mysql://<user_id>:<password>@<host>/<database_name>) :\n"
@@ -144,16 +147,16 @@ def configure_db()
       new_config << {:url => the_url, :roles => the_roles}
       puts "0) save as is, 1) add new db entry\n"
       if gets("\n").to_s.split("\n")[0].to_s.to_i == 0
-          editing = false
-          db_config[:databases] = new_config
+        editing = false
+        db_config[:databases] = new_config
       end
-      end
+    end
   end
   #
-  if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
-      File.delete("#{GxG::SERVER_PATHS[:configuration]}/databases.json")
+  if File.exists?("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json")
+      File.delete("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json")
   end
-  handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/databases.json","w+b", 0664)
+  handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json","w+b", 0664)
   handle.write(::JSON.pretty_generate(db_config))
   handle.close
   # Return db_config
@@ -161,7 +164,7 @@ def configure_db()
   #
 end
 # ### Mount Databases by role
-if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
+if File.exists?("#{::GxG::SYSTEM_PATHS[:configuration]}/databases.json")
     db_config = configure_db()
     # ### Set DB Roles, and other details
     ::GxG::DB[:roles] = {}
@@ -182,7 +185,7 @@ if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
                       the_db_url = entry[:url]
                   else
                       # relative path
-                      the_db_url = "sqlite://#{GxG::SYSTEM_PATHS[:databases]}/#{::URI::parse(entry[:url]).hostname}"
+                      the_db_url = "sqlite://#{::GxG::SYSTEM_PATHS[:databases]}/#{::URI::parse(entry[:url]).hostname}"
                   end
               else
                   the_db_url = entry[:url]
@@ -230,7 +233,7 @@ if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
                     the_db_url = entry[:url]
                 else
                     # relative path
-                    the_db_url = "sqlite://#{GxG::SYSTEM_PATHS[:databases]}/#{::URI::parse(entry[:url]).hostname}"
+                    the_db_url = "sqlite://#{::GxG::SYSTEM_PATHS[:databases]}/#{::URI::parse(entry[:url]).hostname}"
                 end
             else
                 the_db_url = entry[:url]
@@ -274,7 +277,7 @@ if File.exists?("#{GxG::SYSTEM_PATHS[:configuration]}/databases.json")
 else
     log_warn "No Database Configuration found: run setup.rb from the shell."
 end
-# ### Populate the Mandatory VFS with GxG::SYSTEM_PATHS
+# ### Populate the Mandatory VFS with ::GxG::SYSTEM_PATHS
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:system]}), "/System")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:services]}), "/Services")
 ::GxG::VFS.mount(::GxG::Storage::Volume.new({:directory => ::GxG::SYSTEM_PATHS[:installers]}), "/Installers")
@@ -285,13 +288,13 @@ end
 def configure_vfs()
     # VFS Mounting Configuration:
     reserved_roles = ["users", "data"]
-    if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
-      handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/mounts.json", "rb")
+    if File.exists?("#{::GxG::SYSTEM_PATHS[:configuration]}/mounts.json")
+      handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/mounts.json", "rb")
       mount_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
       handle.close
     else
       mount_config = {:mount_points => [{:db_role => "vfs", :path => "/Storage"}, {:db_role => "reference", :path => "/Reference"}, {:file_system => "./Users", :path => "/User"}, {:db_role => "content", :path => "/Public/www/content"}, {:db_role => "software", :path => "/Public/www/software"}]}
-      handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/mounts.json","w+b", 0664)
+      handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/mounts.json","w+b", 0664)
       handle.write(::JSON.pretty_generate(mount_config))
       handle.close
     end
@@ -327,10 +330,10 @@ def configure_vfs()
         end
       end
     end
-    if File.exists?("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
-      File.delete("#{GxG::SERVER_PATHS[:configuration]}/mounts.json")
+    if File.exists?("#{::GxG::SYSTEM_PATHS[:configuration]}/mounts.json")
+      File.delete("#{::GxG::SYSTEM_PATHS[:configuration]}/mounts.json")
     end
-    handle = File.open("#{GxG::SERVER_PATHS[:configuration]}/mounts.json","w+b", 0664)
+    handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/mounts.json","w+b", 0664)
     handle.write(::JSON.pretty_generate(mount_config))
     handle.close
     # Return mount_config
@@ -340,46 +343,134 @@ end
 # Populate Optional VFS mount points
 if GxG::valid_uuid?(GxG::DB[:administrator])
   mount_config = configure_vfs()
-    if mount_config.is_a?(::Hash)
-        #
-        volume = nil
-        mount_config[:mount_points].each do |entry|
-            if entry[:db_role]
-                the_db = ::GxG::DB[:roles][(entry[:db_role].to_sym)]
-                if the_db
-                  volume = ::GxG::Storage::Volume.new({:database => the_db, :credential => GxG::DB[:administrator]})
-                end
-            end
-            if entry[:file_system]
-              if ["./", ".."].include?(entry[:file_system][0..1])
-                # Relative Path - to GXGROOT
-                fs_path = File.expand_path(entry[:file_system],::GxG::SYSTEM.gxg_root())
-              else
-                # Absolute Path
-                fs_path = entry[:file_system]
-              end
-              unless Dir.exist?(fs_path)
-                  FileUtils.mkdir_p(fs_path)
-              end
-              if entry[:path] == "/Users"
-                ::GxG::SYSTEM_PATHS[:users] = fs_path
-                unless Dir.exist?(fs_path + "/Shared")
-                    FileUtils.mkdir_p((fs_path + "/Shared"))
-                end
-              else
-                ::GxG::SYSTEM_PATHS[(File.basename(entry[:path]).downcase.to_sym)] = fs_path 
-              end
-              volume = ::GxG::Storage::Volume.new({:directory => fs_path})
-            end
-            if volume
-              GxG::VFS.mount(volume, entry[:path])
-              volume = nil
-            end
+  if mount_config.is_a?(::Hash)
+    #
+    volume = nil
+    mount_config[:mount_points].each do |entry|
+      if entry[:db_role]
+          the_db = ::GxG::DB[:roles][(entry[:db_role].to_sym)]
+          if the_db
+            volume = ::GxG::Storage::Volume.new({:database => the_db, :credential => GxG::DB[:administrator]})
+          end
+      end
+      if entry[:file_system]
+        if ["./", ".."].include?(entry[:file_system][0..1])
+          # Relative Path - to GXGROOT
+          fs_path = File.expand_path(entry[:file_system],::GxG::SYSTEM.gxg_root())
+        else
+          # Absolute Path
+          fs_path = entry[:file_system]
         end
-    else
-        log_warn "No VFS Optional Configuration found: run setup.rb from the shell."
+        unless Dir.exist?(fs_path)
+            FileUtils.mkdir_p(fs_path)
+        end
+        if entry[:path] == "/Users"
+          ::GxG::SYSTEM_PATHS[:users] = fs_path
+          unless Dir.exist?(fs_path + "/Shared")
+              FileUtils.mkdir_p((fs_path + "/Shared"))
+          end
+        else
+          ::GxG::SYSTEM_PATHS[(File.basename(entry[:path]).downcase.to_sym)] = fs_path 
+        end
+        volume = ::GxG::Storage::Volume.new({:directory => fs_path})
+      end
+      if volume
+        ::GxG::VFS.mount(volume, entry[:path])
+        volume = nil
+      end
     end
+    # ::GxG::DB[:roles][:users]
+
+    credential = nil
+    #
+    begin
+        unless ::GxG::DB[:roles][:users].user_id_available?("root")
+            credential = ::GxG::DB[:roles][:users].user_credential("root","password")
+        end
+    rescue Exception => the_error
+      log_error({:error => the_error})
+    end
+    if credential
+        puts "Found root using credential: #{credential.inspect}"
+        puts "Enter new root UserID: (default 'root')\n"
+        new_id = gets("\n").to_s.split("\n")[0].to_s
+        if new_id.size > 0
+            ::GxG::DB[:roles][:users].user_update(credential,new_id)
+        end
+        puts "Enter new root Password: (default 'password')\n"
+        new_pw = gets("\n").to_s.split("\n")[0].to_s
+        if new_pw.size > 0
+            ::GxG::DB[:roles][:users].user_set_password(credential,"password",new_pw)
+        end
+        #
+        admin_config = {:credential => credential}
+        if File.exist?("#{::GxG::SYSTEM_PATHS[:configuration]}/db_admin.json")
+            File.delete("#{::GxG::SYSTEM_PATHS[:configuration]}/db_admin.json")
+        end
+        handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/db_admin.json","w+b", 0664)
+        handle.write(::JSON.pretty_generate(admin_config))
+        handle.close
+        GxG::DB[:administrator] = credential
+    else
+        # has already been setup.
+        if File.exist?("#{::GxG::SYSTEM_PATHS[:configuration]}/db_admin.json")
+            handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/db_admin.json","rb")
+            admin_config = ::JSON::parse(handle.read(), {:symbolize_names => true})
+            handle.close
+            credential = admin_config[:credential]
+            GxG::DB[:administrator] = credential
+            puts "Found credential: #{credential.inspect}"
+        else
+            raise Exception, "Cannot find required db_admin.json file to work with."
+        end
+    end
+    #
+    if credential && ::GxG::DB[:roles].size > 0
+      volume = nil
+      mount_config[:mount_points].each do |entry|
+        if entry[:db_role]
+          the_db = ::GxG::DB[:roles][(entry[:db_role].to_sym)]
+          if the_db
+            volume = ::GxG::Storage::Volume.new({:database => the_db, :credential => credential})
+          end
+        end
+        if entry[:file_system]
+          volume = ::GxG::Storage::Volume.new({:directory => entry[:file_system]})
+        end
+        if volume
+          GxG::VFS.mount(volume, entry[:path])
+          volume = nil
+        end
+      end
+    end
+    # Retrurn admin_config
+    # admin_config
+    #
+  else
+      log_warn "No VFS Optional Configuration found: run setup.rb from the shell."
+  end
 end
+# 
+# Core Configuration
+unless File.exist?("#{::GxG::SYSTEM_PATHS[:configuration]}/core.json")
+    handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/core.json", "wb")
+    handle.write(::JSON.pretty_generate({:enabled => ["www"], :disabled => [], :available => ["www"]}))
+    handle.close
+end
+# WWW Configuration
+unless File.exist?("#{::GxG::SYSTEM_PATHS[:configuration]}/www.json")
+    handle = File.open("#{::GxG::SYSTEM_PATHS[:configuration]}/www.json", "wb")
+    handle.write(::JSON.pretty_generate({:mode => "production", :listen => [{:address => "127.0.0.1", :port => 32767}], :relative_url => "", :cache_quota => 1073741824, :cache_max_item_size => 1073741824}))
+    handle.close
+end
+# Formats
+puts "Creating Formats ..."
+require (File.expand_path("./seeds/formats.rb",File.dirname(__FILE__)))
+# Website
+puts "Populating Website (defaults) ..."
+require (File.expand_path("./seeds/content_setup.rb",File.dirname(__FILE__)))
+::GxGwww::Setup::populate_new_site()
+# ### ???
 # ### Services Framework
 module GxG
   SERVICES = {}
@@ -1601,6 +1692,7 @@ module GxG
             # copy files into place, setting permissions          
             if @manifest[:objects].is_a?(::Hash)
               @manifest[:objects].each_pair do |the_path, the_permissions|
+                the_vfs_path = the_path
                 if ::GxG::SERVICES[:core][:resources].exist?(the_path.to_s)
                   existing_permissions = ::GxG::VFS.get_permissions(the_path.to_s)
                 else
@@ -1628,7 +1720,7 @@ module GxG
                         the_credential = ::GxG::DB[:administrators]
                       end
                       if the_credential
-                        ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, the_credential, (the_entry.values[0] || {:read => true}))
+                        ::GxG::SERVICES[:core][:resources].set_permissions(the_vfs_path.to_s, the_credential, (the_entry.values[0] || {:read => true}))
                       end
                       #
                     end
@@ -1636,7 +1728,7 @@ module GxG
                   #
                   if existing_permissions.is_a?(::Array)
                     existing_permissions.each do |entry|
-                      ::GxG::SERVICES[:core][:resources].set_permissions(the_path.to_s, entry[:credential] entry[:permissions])
+                      ::GxG::SERVICES[:core][:resources].set_permissions(the_vfs_path.to_s, entry[:credential], entry[:permissions])
                     end
                   end
                   #
@@ -1718,7 +1810,7 @@ module GxG
       end
       #
       def version()
-        ::BigDecimal(@manifest[:version])
+        ::BigDecimal.new(@manifest[:version].to_s)
       end
       #
       def version=(the_version=nil)
@@ -1988,7 +2080,11 @@ unless core_service.configuration()[:available]
     end
   end
 end
-core_service.start
+
+# ### Disabled for now -- new_setup.rb work
+# core_service.start
+# ###
+
 # ### Trap for exit signals
 unless RUBY_ENGINE == "jruby"
   Signal.trap("QUIT") do
@@ -2015,7 +2111,7 @@ end
 #
 unless ($0 == "irb" || $0 == "jirb" || Module.constants.include?(:IRB))
   # ### Place-holder loop for running in the background
-  while true do
-    sleep 5.0
-  end
+  # while true do
+  #   sleep 5000.0
+  # end
 end
