@@ -9,10 +9,10 @@ require 'rubygems/gem_runner'
 require 'rubygems/exceptions'
 #
 module Gem::UserInteraction
-	def terminate_interaction(exit_code = 0)
+  def terminate_interaction(exit_code = 0)
 		# Suppress the instruction to exit ruby:
 		# ui.terminate_interaction exit_code
-	end
+  end
 end
 #
 class Object
@@ -1777,6 +1777,9 @@ module GxG
 end
 # ### Define The Core Service:
 core_service = ::GxG::Services::Service.new(:core)
+# ### Provide Universal Resource Access
+core_service[:resources] = ::GxG::Services::UniversalResourcesAccess.new()
+#
 # ### Define Public Command Interface:
 core_service.on(:start, {:description => "System Service Layer Start", :usage => "{ :start => nil }", :users => false}) do
   ::GxG::SERVICES[:core].start
@@ -1800,16 +1803,6 @@ core_service.on(:at_start, {:description => "System Service Layer Startup", :usa
     ::GxG::Engine::determine_event_allocations()
     ::GxG::Engine::determine_loads()
   end
-end
-core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service, credential|
-  # ### Stop Services
-  ::GxG::Services::stop_order().each do |the_service_moniker|
-    unless the_service_moniker == :core
-      log_info("Stopping Service: #{the_service_moniker.inspect} ...")
-      ::GxG::Services::stop_service(the_service_moniker)
-    end
-  end
-  #
   # ### Load Services
   if service.configuration()[:available]
     service.configuration()[:available].each do |moniker|
@@ -1838,10 +1831,17 @@ core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usa
     end
     #
   end
-#
 end
-# ### Provide Universal Resouce Access
-core_service[:resources] = ::GxG::Services::UniversalResourcesAccess.new()
+core_service.on(:at_stop, {:description => "System Service Layer Shutdown", :usage => "{ :at_stop => (service-object) }", :public => false}) do |service, credential|
+  # ### Stop Services
+  ::GxG::Services::stop_order().each do |the_service_moniker|
+    unless the_service_moniker == :core
+      log_info("Stopping Service: #{the_service_moniker.inspect} ...")
+      ::GxG::Services::stop_service(the_service_moniker)
+    end
+  end
+  #
+end
 #
 unless core_service.configuration()[:available]
   core_service.configuration()[:available] = []
